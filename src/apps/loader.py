@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 from langchain_neo4j import Neo4jGraph
 import streamlit as st
 from streamlit.logger import get_logger
-from chains import load_embedding_model
-from utils import create_constraints, create_vector_index
+from src.apps.chains import load_embedding_model
+from src.apps.utils import create_constraints, create_vector_index
 from PIL import Image
 
 load_dotenv(".env")

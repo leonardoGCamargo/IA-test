@@ -20,8 +20,8 @@ services:
   pull-model:
     image: genai-stack/pull-model:latest
     build:
-      context: .
-      dockerfile: pull_model.Dockerfile
+      context: ..
+      dockerfile: docker/pull_model.Dockerfile
     environment:
       - OLLAMA_BASE_URL=${OLLAMA_BASE_URL-http://host.docker.internal:11434}
       - LLM=${LLM-llama2}
@@ -52,8 +52,8 @@ services:
 
   loader:
     build:
-      context: .
-      dockerfile: loader.Dockerfile
+      context: ..
+      dockerfile: docker/loader.Dockerfile
     volumes:
       - $PWD/embedding_model:/embedding_model
     environment:
@@ -94,8 +94,8 @@ services:
 
   bot:
     build:
-      context: .
-      dockerfile: bot.Dockerfile
+      context: ..
+      dockerfile: docker/bot.Dockerfile
     volumes:
       - $PWD/embedding_model:/embedding_model
     environment:
@@ -135,8 +135,8 @@ services:
 
   pdf_bot:
     build:
-      context: .
-      dockerfile: pdf_bot.Dockerfile
+      context: ..
+      dockerfile: docker/pdf_bot.Dockerfile
     environment:
       - NEO4J_URI=${NEO4J_URI-neo4j://database:7687}
       - NEO4J_PASSWORD=${NEO4J_PASSWORD-password}
@@ -174,8 +174,8 @@ services:
 
   api:
     build:
-      context: .
-      dockerfile: api.Dockerfile
+      context: ..
+      dockerfile: docker/api.Dockerfile
     volumes:
       - $PWD/embedding_model:/embedding_model
     environment:
@@ -220,8 +220,8 @@ services:
 
   front-end:
     build:
-      context: .
-      dockerfile: front-end.Dockerfile
+      context: ..
+      dockerfile: docker/front-end.Dockerfile
     x-develop:
       watch:
         - action: sync
@@ -238,6 +238,71 @@ services:
       - net
     ports:
       - 8505:8505
+
+  mcp-manager:
+    build:
+      context: ..
+      dockerfile: docker/mcp_manager.Dockerfile
+    volumes:
+      - $PWD/mcp_servers.json:/app/mcp_servers.json
+      - $PWD/embedding_model:/app/embedding_model
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - NEO4J_URI=${NEO4J_URI-neo4j://database:7687}
+      - NEO4J_PASSWORD=${NEO4J_PASSWORD-password}
+      - NEO4J_USERNAME=${NEO4J_USERNAME-neo4j}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL-http://host.docker.internal:11434}
+      - LLM=${LLM-llama2}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL-sentence_transformer}
+      - OPENAI_API_KEY=${OPENAI_API_KEY-}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY-}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID-}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY-}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION-}
+      - OBSIDIAN_VAULT_PATH=${OBSIDIAN_VAULT_PATH-}
+      - MCP_ENV_FILE=${MCP_ENV_FILE-.env}
+    networks:
+      - net
+    depends_on:
+      database:
+        condition: service_healthy
+    x-develop:
+      watch:
+        - action: rebuild
+          path: .
+          ignore:
+            - bot.py
+            - loader.py
+            - pdf_bot.py
+            - api.py
+            - front-end/
+    ports:
+      - 8506:8506
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:8506/_stcore/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  kestra:
+    image: kestra/kestra:latest
+    ports:
+      - 8080:8080
+    volumes:
+      - $PWD/kestra_workflows:/app/kestra_workflows
+      - $PWD/kestra_data:/app/kestra_data
+    environment:
+      - KESTRA_SERVER_URL=http://localhost:8080
+      - KESTRA_BASIC_AUTH_ENABLED=false
+    networks:
+      - net
+    depends_on:
+      - database
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:8080/api/v1/configs || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   net:

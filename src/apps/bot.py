@@ -5,10 +5,10 @@ from streamlit.logger import get_logger
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain_neo4j import Neo4jGraph
 from dotenv import load_dotenv
-from utils import (
+from src.apps.utils import (
     create_vector_index,
 )
-from chains import (
+from src.apps.chains import (
     load_embedding_model,
     load_llm,
     configure_llm_only_chain,

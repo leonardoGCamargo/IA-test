@@ -19,7 +19,7 @@ from langchain.prompts import (
 )
 
 from typing import List, Any
-from utils import BaseLogger, extract_title_and_question, format_docs
+from src.apps.utils import BaseLogger, extract_title_and_question, format_docs
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 AWS_MODELS = (

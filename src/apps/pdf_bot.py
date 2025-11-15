@@ -7,13 +7,13 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.prompts import ChatPromptTemplate
 from langchain_neo4j import Neo4jVector
 from streamlit.logger import get_logger
-from chains import (
+from src.apps.chains import (
     load_embedding_model,
     load_llm,
 )
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
-from utils import format_docs
+from src.apps.utils import format_docs
 
 # load api key lib
 from dotenv import load_dotenv
