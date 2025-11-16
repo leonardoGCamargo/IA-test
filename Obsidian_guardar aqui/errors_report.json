@@ -1,0 +1,241 @@
+{
+  "generated_at": "2025-11-15T17:21:02.231797",
+  "critical": [
+    {
+      "name": "NEO4J_URI",
+      "description": "URI do Neo4j Aura DB",
+      "required_for": [
+        "Neo4j",
+        "GraphRAG"
+      ],
+      "configured": true,
+      "value": "neo4j+s://SUBSTITUA_PELA_URI_DO_AURA_DB.databases.neo4j.io",
+      "status": "✅ Configurado"
+    },
+    {
+      "name": "NEO4J_USERNAME",
+      "description": "Username do Neo4j",
+      "required_for": [
+        "Neo4j"
+      ],
+      "configured": true,
+      "value": "neo4j",
+      "status": "✅ Configurado"
+    },
+    {
+      "name": "NEO4J_PASSWORD",
+      "description": "Senha do Neo4j",
+      "required_for": [
+        "Neo4j"
+      ],
+      "configured": true,
+      "value": "zoit_O9j_s...",
+      "status": "✅ Configurado"
+    }
+  ],
+  "important_apis": [
+    {
+      "name": "OPENAI_API_KEY",
+      "description": "Chave da API OpenAI",
+      "required_for": [
+        "OpenAI LLM",
+        "OpenAI Embeddings"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "GOOGLE_API_KEY",
+      "description": "Chave da API Google",
+      "required_for": [
+        "Google Embeddings"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "AWS_ACCESS_KEY_ID",
+      "description": "AWS Access Key ID",
+      "required_for": [
+        "AWS Bedrock"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "AWS_SECRET_ACCESS_KEY",
+      "description": "AWS Secret Access Key",
+      "required_for": [
+        "AWS Bedrock"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "AWS_DEFAULT_REGION",
+      "description": "Região AWS",
+      "required_for": [
+        "AWS Bedrock"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    }
+  ],
+  "important_databases": [
+    {
+      "name": "SUPABASE_URL",
+      "description": "URL do Supabase",
+      "required_for": [
+        "Supabase DB"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "SUPABASE_KEY",
+      "description": "Chave do Supabase",
+      "required_for": [
+        "Supabase DB"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "SUPABASE_SERVICE_ROLE_KEY",
+      "description": "Service Role Key do Supabase",
+      "required_for": [
+        "Supabase DB (opcional)"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "NEON_DATABASE_URL",
+      "description": "URL do Neon",
+      "required_for": [
+        "Neon DB"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "NEON_PROJECT_ID",
+      "description": "Project ID do Neon",
+      "required_for": [
+        "Neon DB (opcional)"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "MONGODB_URI",
+      "description": "URI do MongoDB",
+      "required_for": [
+        "MongoDB"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "MONGODB_DATABASE",
+      "description": "Database do MongoDB",
+      "required_for": [
+        "MongoDB"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    }
+  ],
+  "optional": [
+    {
+      "name": "LANGCHAIN_TRACING_V2",
+      "description": "Habilitar LangChain Tracing",
+      "required_for": [
+        "LangSmith"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "LANGCHAIN_API_KEY",
+      "description": "Chave da API LangChain",
+      "required_for": [
+        "LangSmith"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "LANGCHAIN_PROJECT",
+      "description": "Projeto LangChain",
+      "required_for": [
+        "LangSmith"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "OBSIDIAN_VAULT_PATH",
+      "description": "Caminho do Vault Obsidian",
+      "required_for": [
+        "Obsidian Integration"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    },
+    {
+      "name": "OLLAMA_BASE_URL",
+      "description": "URL do Ollama",
+      "required_for": [
+        "Ollama LLM"
+      ],
+      "configured": false,
+      "value": null,
+      "status": "❌ Não configurado"
+    }
+  ],
+  "configs": [
+    {
+      "name": "LLM",
+      "description": "Modelo LLM",
+      "required_for": [
+        "Todos os agentes"
+      ],
+      "configured": true,
+      "value": "llama2",
+      "status": "✅ Configurado"
+    },
+    {
+      "name": "EMBEDDING_MODEL",
+      "description": "Modelo de Embedding",
+      "required_for": [
+        "RAG",
+        "Vector Search"
+      ],
+      "configured": true,
+      "value": "sentence_transformer",
+      "status": "✅ Configurado"
+    }
+  ],
+  "summary": {
+    "total": 22,
+    "configured": 5,
+    "missing": 17
+  }
+}

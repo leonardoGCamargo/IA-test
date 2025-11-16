@@ -1,0 +1,42 @@
+{
+  "neo4j": {
+    "name": "neo4j",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@neo4j/mcp-server-neo4j"
+    ],
+    "enabled": true,
+    "description": "Neo4j GraphRAG e conhecimento estruturado"
+  },
+  "obsidian": {
+    "name": "obsidian",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-obsidian"
+    ],
+    "enabled": true,
+    "description": "Gestão de notas Obsidian"
+  },
+  "git": {
+    "name": "git",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-git"
+    ],
+    "enabled": true,
+    "description": "Operações Git/GitHub"
+  },
+  "filesystem": {
+    "name": "filesystem",
+    "command": "npx",
+    "args": [
+      "-y",
+      "@modelcontextprotocol/server-filesystem"
+    ],
+    "enabled": false,
+    "description": "Acesso ao sistema de arquivos (opcional)"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "agentes": [
+    {
+      "arquivo": "kestra_langchain_master.py",
+      "motivo": "Funcionalidades já no orchestrator.py",
+      "acao": "REMOVER"
+    },
+    {
+      "arquivo": "agent_dashboard_ui.py",
+      "motivo": "Pode ser redundante com agent_dashboard.py",
+      "acao": "VERIFICAR"
+    }
+  ],
+  "documentacao": [
+    {
+      "grupo": "dashboard",
+      "arquivos": [
+        "AGENT_DASHBOARD_README.md",
+        "DASHBOARD_AGENTES.md",
+        "DASHBOARD_MELHORIAS.md",
+        "DASHBOARD_RESUMO.md",
+        "DASHBOARD_SETUP.md"
+      ],
+      "quantidade": 5,
+      "acao": "CONSOLIDAR"
+    },
+    {
+      "grupo": "organizacao",
+      "arquivos": [
+        "ORGANIZACAO_COMPLETA.md",
+        "ORGANIZACAO_FINAL.md",
+        "ORGANIZACAO_FINALIZADA.md",
+        "ORGANIZACAO_PROJETO.md",
+        "RESUMO_ORGANIZACAO_FINAL.md"
+      ],
+      "quantidade": 5,
+      "acao": "CONSOLIDAR"
+    },
+    {
+      "grupo": "mcp",
+      "arquivos": [
+        "BROWSER_MCP_SETUP.md",
+        "MCP_ARCHITECTURE.md",
+        "MCP_BROWSER_CURSOR.md",
+        "MCP_README.md"
+      ],
+      "quantidade": 4,
+      "acao": "CONSOLIDAR"
+    }
+  ],
+  "docker_compose": {
+    "quantidade": 3,
+    "arquivos": [
+      "docker-compose.optimized.yml",
+      "docker-compose.stacks.yml",
+      "docker-compose.yml"
+    ],
+    "acao": "CONSOLIDAR em 1 versão"
+  }
+}

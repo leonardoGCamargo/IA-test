@@ -1,0 +1,13 @@
+{
+  "agentes": {
+    "kestra_master": true,
+    "dashboard_ui": true,
+    "run_dashboard": true
+  },
+  "docs": {
+    "dashboard": 5,
+    "organizacao": 5,
+    "mcp": 4
+  },
+  "docker": 2
+}

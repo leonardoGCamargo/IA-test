@@ -1,0 +1,283 @@
+version: '3.8'
+
+# Variáveis compartilhadas
+x-common-variables: &common-vars
+  NEO4J_URI: ${NEO4J_URI:-neo4j://database:7687}
+  NEO4J_USERNAME: ${NEO4J_USERNAME:-neo4j}
+  NEO4J_PASSWORD: ${NEO4J_PASSWORD:-password}
+  OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+  LLM: ${LLM:-llama2}
+  EMBEDDING_MODEL: ${EMBEDDING_MODEL:-sentence_transformer}
+  LANGCHAIN_ENDPOINT: ${LANGCHAIN_ENDPOINT:-https://api.smith.langchain.com}
+  LANGCHAIN_TRACING_V2: ${LANGCHAIN_TRACING_V2:-false}
+  LANGCHAIN_PROJECT: ${LANGCHAIN_PROJECT:-}
+  LANGCHAIN_API_KEY: ${LANGCHAIN_API_KEY:-}
+  OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+  GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+  AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+  AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+  AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-}
+
+x-common-volumes: &common-volumes
+  - $PWD/embedding_model:/embedding_model
+
+x-common-build: &common-build
+  context: ..
+  dockerfile: docker
+
+x-common-network: &common-network
+  networks:
+    - net
+
+x-common-depends: &common-depends
+  depends_on:
+    database:
+      condition: service_healthy
+    pull-model:
+      condition: service_completed_successfully
+
+services:
+  # ============================================
+  # INFRAESTRUTURA BASE
+  # ============================================
+  
+  database:
+    image: neo4j:5.26
+    user: neo4j:neo4j
+    container_name: ia-test-neo4j
+    ports:
+      - "7687:7687"
+      - "7474:7474"
+    volumes:
+      - neo4j_data:/data
+    environment:
+      NEO4J_AUTH: ${NEO4J_USERNAME:-neo4j}/${NEO4J_PASSWORD:-password}
+      NEO4J_PLUGINS: '["apoc"]'
+      NEO4J_db_tx__log_rotation_retention__policy: "false"
+      NEO4J_dbms_security_procedures_unrestricted: "apoc.*"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:7474 || exit 1"]
+      interval: 15s
+      timeout: 30s
+      retries: 10
+    restart: unless-stopped
+    <<: *common-network
+
+  # Ollama (opcional - pode usar externo)
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ia-test-ollama
+    profiles: ["ollama", "full"]
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    <<: *common-network
+
+  # Pull Model (one-time job)
+  pull-model:
+    image: genai-stack/pull-model:latest
+    build:
+      context: ..
+      dockerfile: docker/pull_model.Dockerfile
+    environment:
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      LLM: ${LLM:-llama2}
+    profiles: ["pull-model"]
+    restart: "no"
+    <<: *common-network
+
+  # ============================================
+  # APLICAÇÕES PRINCIPAIS
+  # ============================================
+
+  # API (FastAPI)
+  api:
+    build:
+      context: ..
+      dockerfile: docker/api.Dockerfile
+    container_name: ia-test-api
+    volumes:
+      <<: *common-volumes
+    environment:
+      <<: *common-vars
+    ports:
+      - "8504:8504"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:8504/ || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+    <<: *common-network
+    <<: *common-depends
+
+  # Bot (Streamlit)
+  bot:
+    build:
+      context: ..
+      dockerfile: docker/bot.Dockerfile
+    container_name: ia-test-bot
+    volumes:
+      <<: *common-volumes
+    environment:
+      <<: *common-vars
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
+    <<: *common-network
+    <<: *common-depends
+
+  # Loader (Streamlit)
+  loader:
+    build:
+      context: ..
+      dockerfile: docker/loader.Dockerfile
+    container_name: ia-test-loader
+    volumes:
+      <<: *common-volumes
+    environment:
+      <<: *common-vars
+    ports:
+      - "8502:8502"
+    restart: unless-stopped
+    <<: *common-network
+    <<: *common-depends
+
+  # PDF Bot (Streamlit)
+  pdf-bot:
+    build:
+      context: ..
+      dockerfile: docker/pdf_bot.Dockerfile
+    container_name: ia-test-pdf-bot
+    environment:
+      <<: *common-vars
+    ports:
+      - "8503:8503"
+    profiles: ["pdf-bot"]
+    restart: unless-stopped
+    <<: *common-network
+    <<: *common-depends
+
+  # Front-end (Svelte)
+  front-end:
+    build:
+      context: ..
+      dockerfile: docker/front-end.Dockerfile
+    container_name: ia-test-frontend
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "8505:8505"
+    restart: unless-stopped
+    <<: *common-network
+
+  # ============================================
+  # AGENTES E FERRAMENTAS
+  # ============================================
+
+  # Agent Dashboard (Streamlit)
+  agent-dashboard:
+    build:
+      context: ..
+      dockerfile: docker/agent_dashboard.Dockerfile
+    container_name: ia-test-agent-dashboard
+    volumes:
+      - $PWD/.env:/app/.env
+      - $PWD/src:/app/src
+      - $PWD/config:/app/config
+    environment:
+      <<: *common-vars
+      SUPABASE_URL: ${SUPABASE_URL:-}
+      SUPABASE_KEY: ${SUPABASE_KEY:-}
+      NEON_DATABASE_URL: ${NEON_DATABASE_URL:-}
+      MONGODB_URI: ${MONGODB_URI:-}
+      MONGODB_DATABASE: ${MONGODB_DATABASE:-default}
+    ports:
+      - "8507:8507"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:8507/_stcore/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+    <<: *common-network
+    depends_on:
+      database:
+        condition: service_healthy
+
+  # MCP Manager (Streamlit)
+  mcp-manager:
+    build:
+      context: ..
+      dockerfile: docker/mcp_manager.Dockerfile
+    container_name: ia-test-mcp-manager
+    volumes:
+      - $PWD/mcp_servers.json:/app/mcp_servers.json
+      <<: *common-volumes
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      <<: *common-vars
+      OBSIDIAN_VAULT_PATH: ${OBSIDIAN_VAULT_PATH:-}
+      MCP_ENV_FILE: ${MCP_ENV_FILE:-.env}
+    ports:
+      - "8506:8506"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:8506/_stcore/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    profiles: ["mcp"]
+    restart: unless-stopped
+    <<: *common-network
+    depends_on:
+      database:
+        condition: service_healthy
+
+  # Kestra (Workflow Engine)
+  kestra:
+    image: kestra/kestra:latest
+    container_name: ia-test-kestra
+    ports:
+      - "8080:8080"
+    volumes:
+      - kestra_workflows:/app/kestra_workflows
+      - kestra_data:/app/kestra_data
+    environment:
+      KESTRA_SERVER_URL: http://localhost:8080
+      KESTRA_BASIC_AUTH_ENABLED: "false"
+    profiles: ["kestra"]
+    restart: unless-stopped
+    <<: *common-network
+    depends_on:
+      database:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:8080/api/v1/configs || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+# ============================================
+# NETWORKS
+# ============================================
+networks:
+  net:
+    name: ia-test-network
+    driver: bridge
+
+# ============================================
+# VOLUMES
+# ============================================
+volumes:
+  neo4j_data:
+    name: ia-test-neo4j-data
+  ollama_data:
+    name: ia-test-ollama-data
+  kestra_workflows:
+    name: ia-test-kestra-workflows
+  kestra_data:
+    name: ia-test-kestra-data
+

@@ -1,0 +1,316 @@
+version: '3.8'
+
+# ============================================
+# STACK PRINCIPAL - Serviços Essenciais
+# ============================================
+# Uso: docker compose -f config/docker-compose.stacks.yml up stack-core
+
+# Variáveis compartilhadas
+x-common-variables: &common-vars
+  NEO4J_URI: ${NEO4J_URI:-neo4j://database:7687}
+  NEO4J_USERNAME: ${NEO4J_USERNAME:-neo4j}
+  NEO4J_PASSWORD: ${NEO4J_PASSWORD:-password}
+  OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+  LLM: ${LLM:-llama2}
+  EMBEDDING_MODEL: ${EMBEDDING_MODEL:-sentence_transformer}
+  LANGCHAIN_ENDPOINT: ${LANGCHAIN_ENDPOINT:-https://api.smith.langchain.com}
+  LANGCHAIN_TRACING_V2: ${LANGCHAIN_TRACING_V2:-false}
+  LANGCHAIN_PROJECT: ${LANGCHAIN_PROJECT:-}
+  LANGCHAIN_API_KEY: ${LANGCHAIN_API_KEY:-}
+  OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+  GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+  AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-}
+  AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-}
+  AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION:-}
+  SUPABASE_URL: ${SUPABASE_URL:-}
+  SUPABASE_KEY: ${SUPABASE_KEY:-}
+  NEON_DATABASE_URL: ${NEON_DATABASE_URL:-}
+  MONGODB_URI: ${MONGODB_URI:-}
+  MONGODB_DATABASE: ${MONGODB_DATABASE:-default}
+
+x-common-volumes: &common-volumes
+  - embedding_model:/embedding_model
+
+x-common-network: &common-network
+  networks:
+    - ia-test-network
+
+services:
+  # ============================================
+  # STACK CORE - Serviços Essenciais
+  # ============================================
+  # docker compose -f config/docker-compose.stacks.yml up stack-core
+
+  # Neo4j Database
+  neo4j:
+    image: neo4j:5.26
+    user: neo4j:neo4j
+    container_name: ia-test-neo4j
+    ports:
+      - "7687:7687"
+      - "7474:7474"
+    volumes:
+      - neo4j_data:/data
+    environment:
+      NEO4J_AUTH: ${NEO4J_USERNAME:-neo4j}/${NEO4J_PASSWORD:-password}
+      NEO4J_PLUGINS: '["apoc"]'
+      NEO4J_db_tx__log_rotation_retention__policy: "false"
+      NEO4J_dbms_security_procedures_unrestricted: "apoc.*"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:7474 || exit 1"]
+      interval: 15s
+      timeout: 30s
+      retries: 10
+    restart: unless-stopped
+    <<: *common-network
+    deploy:
+      labels:
+        - "com.docker.compose.project=ia-test"
+        - "com.docker.compose.service=neo4j"
+        - "stack=core"
+
+  # API (FastAPI)
+  api:
+    build:
+      context: ..
+      dockerfile: docker/api.Dockerfile
+    container_name: ia-test-api
+    volumes:
+      <<: *common-volumes
+    environment:
+      <<: *common-vars
+    ports:
+      - "8504:8504"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:8504/ || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+    <<: *common-network
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    deploy:
+      labels:
+        - "com.docker.compose.project=ia-test"
+        - "com.docker.compose.service=api"
+        - "stack=core"
+
+  # Front-end (Svelte)
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/front-end.Dockerfile
+    container_name: ia-test-frontend
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "8505:8505"
+    restart: unless-stopped
+    <<: *common-network
+    deploy:
+      labels:
+        - "com.docker.compose.project=ia-test"
+        - "com.docker.compose.service=frontend"
+        - "stack=core"
+
+  # Agent Dashboard
+  agent-dashboard:
+    build:
+      context: ..
+      dockerfile: docker/agent_dashboard.Dockerfile
+    container_name: ia-test-agent-dashboard
+    volumes:
+      - $PWD/.env:/app/.env
+      - $PWD/src:/app/src
+      - $PWD/config:/app/config
+    environment:
+      <<: *common-vars
+    ports:
+      - "8507:8507"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:8507/_stcore/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+    <<: *common-network
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    deploy:
+      labels:
+        - "com.docker.compose.project=ia-test"
+        - "com.docker.compose.service=agent-dashboard"
+        - "stack=core"
+
+  # ============================================
+  # STACK STREAMLIT - Aplicações Streamlit
+  # ============================================
+  # docker compose -f config/docker-compose.stacks.yml up stack-streamlit
+
+  # Bot (Streamlit)
+  bot:
+    build:
+      context: ..
+      dockerfile: docker/bot.Dockerfile
+    container_name: ia-test-bot
+    volumes:
+      <<: *common-volumes
+    environment:
+      <<: *common-vars
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
+    <<: *common-network
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    deploy:
+      labels:
+        - "com.docker.compose.project=ia-test"
+        - "com.docker.compose.service=bot"
+        - "stack=streamlit"
+    profiles: ["streamlit"]
+
+  # Loader (Streamlit)
+  loader:
+    build:
+      context: ..
+      dockerfile: docker/loader.Dockerfile
+    container_name: ia-test-loader
+    volumes:
+      <<: *common-volumes
+    environment:
+      <<: *common-vars
+    ports:
+      - "8502:8502"
+    restart: unless-stopped
+    <<: *common-network
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    deploy:
+      labels:
+        - "com.docker.compose.project=ia-test"
+        - "com.docker.compose.service=loader"
+        - "stack=streamlit"
+    profiles: ["streamlit"]
+
+  # PDF Bot (Streamlit)
+  pdf-bot:
+    build:
+      context: ..
+      dockerfile: docker/pdf_bot.Dockerfile
+    container_name: ia-test-pdf-bot
+    environment:
+      <<: *common-vars
+    ports:
+      - "8503:8503"
+    restart: unless-stopped
+    <<: *common-network
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    deploy:
+      labels:
+        - "com.docker.compose.project=ia-test"
+        - "com.docker.compose.service=pdf-bot"
+        - "stack=streamlit"
+    profiles: ["streamlit"]
+
+  # ============================================
+  # STACK TOOLS - Ferramentas Adicionais
+  # ============================================
+  # docker compose -f config/docker-compose.stacks.yml up stack-tools
+
+  # MCP Manager
+  mcp-manager:
+    build:
+      context: ..
+      dockerfile: docker/mcp_manager.Dockerfile
+    container_name: ia-test-mcp-manager
+    volumes:
+      - $PWD/mcp_servers.json:/app/mcp_servers.json
+      <<: *common-volumes
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      <<: *common-vars
+      OBSIDIAN_VAULT_PATH: ${OBSIDIAN_VAULT_PATH:-}
+      MCP_ENV_FILE: ${MCP_ENV_FILE:-.env}
+    ports:
+      - "8506:8506"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:8506/_stcore/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+    <<: *common-network
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    deploy:
+      labels:
+        - "com.docker.compose.project=ia-test"
+        - "com.docker.compose.service=mcp-manager"
+        - "stack=tools"
+    profiles: ["tools"]
+
+  # Kestra
+  kestra:
+    image: kestra/kestra:latest
+    container_name: ia-test-kestra
+    ports:
+      - "8080:8080"
+    volumes:
+      - kestra_workflows:/app/kestra_workflows
+      - kestra_data:/app/kestra_data
+    environment:
+      KESTRA_SERVER_URL: http://localhost:8080
+      KESTRA_BASIC_AUTH_ENABLED: "false"
+    restart: unless-stopped
+    <<: *common-network
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 http://localhost:8080/api/v1/configs || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      labels:
+        - "com.docker.compose.project=ia-test"
+        - "com.docker.compose.service=kestra"
+        - "stack=tools"
+    profiles: ["tools"]
+
+# ============================================
+# NETWORKS
+# ============================================
+networks:
+  ia-test-network:
+    name: ia-test-network
+    driver: bridge
+
+# ============================================
+# VOLUMES
+# ============================================
+volumes:
+  neo4j_data:
+    name: ia-test-neo4j-data
+  embedding_model:
+    name: ia-test-embedding-model
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/embedding_model
+  kestra_workflows:
+    name: ia-test-kestra-workflows
+  kestra_data:
+    name: ia-test-kestra-data
+

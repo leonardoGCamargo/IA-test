@@ -1,0 +1,174 @@
+{
+  "timestamp": "2025-11-16T19:28:06.166308",
+  "indexes_created": [
+    "Agent.type",
+    "Agent.uses_llm",
+    "Service.type",
+    "Service.port",
+    "MCP.enabled",
+    "Config.type"
+  ],
+  "relationships_added": [
+    {
+      "source": "orchestrator",
+      "target": "neo4j-graphrag",
+      "type": "DEPENDS_ON",
+      "description": "Orchestrator depende do GraphRAG para consultas"
+    },
+    {
+      "source": "orchestrator",
+      "target": "mcp-manager",
+      "type": "DEPENDS_ON",
+      "description": "Orchestrator depende do MCP Manager"
+    },
+    {
+      "source": "neo4j-graphrag",
+      "target": "db-manager",
+      "type": "USES",
+      "description": "GraphRAG usa DB Manager para conexões"
+    },
+    {
+      "source": "system-health",
+      "target": "docker-integration",
+      "type": "MONITORS",
+      "description": "System Health monitora Docker"
+    },
+    {
+      "source": "system-health",
+      "target": "kestra-agent",
+      "type": "MONITORS",
+      "description": "System Health monitora Kestra"
+    },
+    {
+      "source": "api-service",
+      "target": "neo4j-service",
+      "type": "QUERIES",
+      "description": "API faz queries no Neo4j"
+    },
+    {
+      "source": "dashboard-service",
+      "target": "api-service",
+      "type": "CALLS",
+      "description": "Dashboard chama API"
+    },
+    {
+      "source": "mcp-manager-service",
+      "target": "neo4j-service",
+      "type": "QUERIES",
+      "description": "MCP Manager consulta Neo4j"
+    },
+    {
+      "source": "kestra-service",
+      "target": "kestra-postgres",
+      "type": "STORES",
+      "description": "Kestra armazena dados no PostgreSQL"
+    },
+    {
+      "source": "orchestrator",
+      "target": "llm",
+      "type": "REQUIRES",
+      "description": "Orchestrator requer configuração LLM"
+    },
+    {
+      "source": "neo4j-graphrag",
+      "target": "embedding_model",
+      "type": "REQUIRES",
+      "description": "GraphRAG requer modelo de embedding"
+    },
+    {
+      "source": "api-service",
+      "target": "neo4j_uri",
+      "type": "REQUIRES",
+      "description": "API requer URI do Neo4j"
+    },
+    {
+      "source": "obsidian-integration",
+      "target": "neo4j-graphrag",
+      "type": "FEEDS",
+      "description": "Obsidian alimenta dados no GraphRAG"
+    },
+    {
+      "source": "mcp-manager",
+      "target": "neo4j-graphrag",
+      "type": "FEEDS",
+      "description": "MCP Manager alimenta dados no GraphRAG"
+    },
+    {
+      "source": "git-integration",
+      "target": "neo4j-graphrag",
+      "type": "FEEDS",
+      "description": "Git alimenta dados no GraphRAG"
+    }
+  ],
+  "properties_added": [
+    "Service.status, last_health_check, health_status",
+    "Agent.version, last_update, maintainer"
+  ],
+  "patterns_identified": [
+    {
+      "pattern": "Agentes que usam LLM",
+      "count": 2,
+      "agents": [
+        "Orchestrator",
+        "Neo4j GraphRAG"
+      ]
+    },
+    {
+      "pattern": "Serviços por profile Docker",
+      "distribution": [
+        {
+          "profile": "core",
+          "count": 4
+        },
+        {
+          "profile": "tools",
+          "count": 3
+        },
+        {
+          "profile": "streamlit",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "pattern": "Cadeias de dependência entre agentes",
+      "count": 2
+    },
+    {
+      "pattern": "Componentes hub (muitas conexões)",
+      "hubs": [
+        {
+          "label": "Project",
+          "id": "ia-test",
+          "name": "IA-Test",
+          "degree": 30
+        },
+        {
+          "label": "Agent",
+          "id": "orchestrator",
+          "name": "Orchestrator",
+          "degree": 17
+        },
+        {
+          "label": "Agent",
+          "id": "neo4j-graphrag",
+          "name": "Neo4j GraphRAG",
+          "degree": 14
+        },
+        {
+          "label": "Agent",
+          "id": "system-health",
+          "name": "System Health Agent",
+          "degree": 8
+        },
+        {
+          "label": "Agent",
+          "id": "mcp-manager",
+          "name": "MCP Manager",
+          "degree": 8
+        }
+      ]
+    }
+  ],
+  "suggestions": []
+}

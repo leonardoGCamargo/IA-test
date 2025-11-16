@@ -1,0 +1,68 @@
+# Configuração TestSprite para o projeto IA-Test
+# Documentação: https://docs.testsprite.com
+
+project:
+  name: "IA-Test"
+  language: "python"
+  version: "1.0.0"
+
+# Configurações de teste
+testing:
+  framework: "pytest"
+  test_directory: "tests"
+  coverage_threshold: 70
+  
+# Configurações de agentes para testar
+agents:
+  - name: "orchestrator"
+    path: "src/agents/orchestrator.py"
+    priority: "high"
+  
+  - name: "db_manager"
+    path: "src/agents/db_manager.py"
+    priority: "high"
+  
+  - name: "diagnostic_agent"
+    path: "src/agents/diagnostic_agent.py"
+    priority: "medium"
+  
+  - name: "resolution_agent"
+    path: "src/agents/resolution_agent.py"
+    priority: "medium"
+  
+  - name: "mcp_manager"
+    path: "src/agents/mcp_manager.py"
+    priority: "high"
+
+# Configurações de aplicações para testar
+apps:
+  - name: "api"
+    path: "src/apps/api.py"
+    type: "fastapi"
+  
+  - name: "bot"
+    path: "src/apps/bot.py"
+    type: "streamlit"
+  
+  - name: "utils"
+    path: "src/apps/utils.py"
+    type: "utility"
+
+# Configurações de integração
+integration:
+  docker: true
+  neo4j: true
+  ollama: false  # Pode ser habilitado se necessário
+
+# Configurações de relatórios
+reporting:
+  format: ["html", "json"]
+  output_directory: "test_reports"
+  include_coverage: true
+
+# Configurações de CI/CD
+ci:
+  on_push: true
+  on_pull_request: true
+  parallel: true
+

@@ -1,0 +1,913 @@
+{
+  "project_name": "IA-Test",
+  "created_at": "2025-11-15T12:57:21.179690",
+  "structure": {
+    "src/agents": {
+      "description": "Agentes do sistema",
+      "files": [
+        {
+          "name": "agent_dashboard_ui.py",
+          "path": "src\\agents\\agent_dashboard_ui.py",
+          "size": 15782
+        },
+        {
+          "name": "agent_helper_system.py",
+          "path": "src\\agents\\agent_helper_system.py",
+          "size": 19804
+        },
+        {
+          "name": "db_manager.py",
+          "path": "src\\agents\\db_manager.py",
+          "size": 24714
+        },
+        {
+          "name": "diagnostic_agent.py",
+          "path": "src\\agents\\diagnostic_agent.py",
+          "size": 24910
+        },
+        {
+          "name": "git_integration.py",
+          "path": "src\\agents\\git_integration.py",
+          "size": 14519
+        },
+        {
+          "name": "kestra_langchain_master.py",
+          "path": "src\\agents\\kestra_langchain_master.py",
+          "size": 17666
+        },
+        {
+          "name": "mcp_docker_integration.py",
+          "path": "src\\agents\\mcp_docker_integration.py",
+          "size": 26811
+        },
+        {
+          "name": "mcp_kestra_integration.py",
+          "path": "src\\agents\\mcp_kestra_integration.py",
+          "size": 14543
+        },
+        {
+          "name": "mcp_manager.py",
+          "path": "src\\agents\\mcp_manager.py",
+          "size": 14341
+        },
+        {
+          "name": "mcp_manager_ui.py",
+          "path": "src\\agents\\mcp_manager_ui.py",
+          "size": 40724
+        },
+        {
+          "name": "mcp_neo4j_integration.py",
+          "path": "src\\agents\\mcp_neo4j_integration.py",
+          "size": 29357
+        },
+        {
+          "name": "mcp_obsidian_integration.py",
+          "path": "src\\agents\\mcp_obsidian_integration.py",
+          "size": 12698
+        },
+        {
+          "name": "orchestrator.py",
+          "path": "src\\agents\\orchestrator.py",
+          "size": 31385
+        },
+        {
+          "name": "resolution_agent.py",
+          "path": "src\\agents\\resolution_agent.py",
+          "size": 22531
+        },
+        {
+          "name": "__init__.py",
+          "path": "src\\agents\\__init__.py",
+          "size": 1059
+        },
+        {
+          "name": "mcp_docker_integration.cpython-313.pyc",
+          "path": "src\\agents\\__pycache__\\mcp_docker_integration.cpython-313.pyc",
+          "size": 30726
+        },
+        {
+          "name": "mcp_manager.cpython-313.pyc",
+          "path": "src\\agents\\__pycache__\\mcp_manager.cpython-313.pyc",
+          "size": 16605
+        },
+        {
+          "name": "mcp_neo4j_integration.cpython-313.pyc",
+          "path": "src\\agents\\__pycache__\\mcp_neo4j_integration.cpython-313.pyc",
+          "size": 31632
+        },
+        {
+          "name": "mcp_obsidian_integration.cpython-313.pyc",
+          "path": "src\\agents\\__pycache__\\mcp_obsidian_integration.cpython-313.pyc",
+          "size": 14626
+        },
+        {
+          "name": "orchestrator.cpython-313.pyc",
+          "path": "src\\agents\\__pycache__\\orchestrator.cpython-313.pyc",
+          "size": 26056
+        },
+        {
+          "name": "__init__.cpython-313.pyc",
+          "path": "src\\agents\\__pycache__\\__init__.cpython-313.pyc",
+          "size": 730
+        }
+      ]
+    },
+    "src/apps": {
+      "description": "Aplicações principais",
+      "files": [
+        {
+          "name": "api.py",
+          "path": "src\\apps\\api.py",
+          "size": 4074
+        },
+        {
+          "name": "bot.py",
+          "path": "src\\apps\\bot.py",
+          "size": 5446
+        },
+        {
+          "name": "chains.py",
+          "path": "src\\apps\\chains.py",
+          "size": 9620
+        },
+        {
+          "name": "loader.py",
+          "path": "src\\apps\\loader.py",
+          "size": 5735
+        },
+        {
+          "name": "pdf_bot.py",
+          "path": "src\\apps\\pdf_bot.py",
+          "size": 3414
+        },
+        {
+          "name": "utils.py",
+          "path": "src\\apps\\utils.py",
+          "size": 1941
+        },
+        {
+          "name": "__init__.py",
+          "path": "src\\apps\\__init__.py",
+          "size": 37
+        }
+      ]
+    },
+    "docker": {
+      "description": "Configurações Docker",
+      "files": [
+        {
+          "name": "agent_dashboard.Dockerfile",
+          "path": "docker\\agent_dashboard.Dockerfile",
+          "size": 645
+        },
+        {
+          "name": "api.Dockerfile",
+          "path": "docker\\api.Dockerfile",
+          "size": 452
+        },
+        {
+          "name": "bot.Dockerfile",
+          "path": "docker\\bot.Dockerfile",
+          "size": 499
+        },
+        {
+          "name": "front-end.Dockerfile",
+          "path": "docker\\front-end.Dockerfile",
+          "size": 127
+        },
+        {
+          "name": "loader.Dockerfile",
+          "path": "docker\\loader.Dockerfile",
+          "size": 527
+        },
+        {
+          "name": "mcp_docker_integration.Dockerfile",
+          "path": "docker\\mcp_docker_integration.Dockerfile",
+          "size": 654
+        },
+        {
+          "name": "mcp_manager.Dockerfile",
+          "path": "docker\\mcp_manager.Dockerfile",
+          "size": 717
+        },
+        {
+          "name": "pdf_bot.Dockerfile",
+          "path": "docker\\pdf_bot.Dockerfile",
+          "size": 507
+        },
+        {
+          "name": "pull_model.Dockerfile",
+          "path": "docker\\pull_model.Dockerfile",
+          "size": 2045
+        }
+      ]
+    },
+    "config": {
+      "description": "Configurações do projeto",
+      "files": [
+        {
+          "name": "docker-compose.optimized.yml",
+          "path": "config\\docker-compose.optimized.yml",
+          "size": 7615
+        },
+        {
+          "name": "docker-compose.stacks.yml",
+          "path": "config\\docker-compose.stacks.yml",
+          "size": 8847
+        },
+        {
+          "name": "docker-compose.yml",
+          "path": "config\\docker-compose.yml",
+          "size": 8339
+        },
+        {
+          "name": "env.example",
+          "path": "config\\env.example",
+          "size": 3419
+        },
+        {
+          "name": "requirements.txt",
+          "path": "config\\requirements.txt",
+          "size": 755
+        }
+      ]
+    },
+    "docs": {
+      "description": "Documentação técnica",
+      "files": [
+        {
+          "name": "AGENT_DASHBOARD_README.md",
+          "path": "docs\\AGENT_DASHBOARD_README.md",
+          "size": 5928
+        },
+        {
+          "name": "ARCHITECTURE.md",
+          "path": "docs\\ARCHITECTURE.md",
+          "size": 4849
+        },
+        {
+          "name": "ARCHITECTURE_DEEP_DIVE.md",
+          "path": "docs\\ARCHITECTURE_DEEP_DIVE.md",
+          "size": 12245
+        },
+        {
+          "name": "DASHBOARD_RESUMO.md",
+          "path": "docs\\DASHBOARD_RESUMO.md",
+          "size": 6175
+        },
+        {
+          "name": "DASHBOARD_SETUP.md",
+          "path": "docs\\DASHBOARD_SETUP.md",
+          "size": 4568
+        },
+        {
+          "name": "DB_MANAGER_README.md",
+          "path": "docs\\DB_MANAGER_README.md",
+          "size": 9047
+        },
+        {
+          "name": "DOCKER_CLEANUP_SUMMARY.md",
+          "path": "docs\\DOCKER_CLEANUP_SUMMARY.md",
+          "size": 6697
+        },
+        {
+          "name": "DOCKER_INTEGRATION_README.md",
+          "path": "docs\\DOCKER_INTEGRATION_README.md",
+          "size": 5427
+        },
+        {
+          "name": "DOCKER_OPTIMIZATION.md",
+          "path": "docs\\DOCKER_OPTIMIZATION.md",
+          "size": 7597
+        },
+        {
+          "name": "ENGINEERING_GUIDE.md",
+          "path": "docs\\ENGINEERING_GUIDE.md",
+          "size": 13620
+        },
+        {
+          "name": "EXECUTION_PLAN.md",
+          "path": "docs\\EXECUTION_PLAN.md",
+          "size": 5265
+        },
+        {
+          "name": "GIT_INTEGRATION_README.md",
+          "path": "docs\\GIT_INTEGRATION_README.md",
+          "size": 6581
+        },
+        {
+          "name": "MASTER_AGENT_README.md",
+          "path": "docs\\MASTER_AGENT_README.md",
+          "size": 6023
+        },
+        {
+          "name": "MCP_ARCHITECTURE.md",
+          "path": "docs\\MCP_ARCHITECTURE.md",
+          "size": 9033
+        },
+        {
+          "name": "MCP_README.md",
+          "path": "docs\\MCP_README.md",
+          "size": 4556
+        },
+        {
+          "name": "ORCHESTRATOR_SUMMARY.md",
+          "path": "docs\\ORCHESTRATOR_SUMMARY.md",
+          "size": 5860
+        },
+        {
+          "name": "ORGANIZACAO_FINAL.md",
+          "path": "docs\\ORGANIZACAO_FINAL.md",
+          "size": 2366
+        },
+        {
+          "name": "ORGANIZACAO_PROJETO.md",
+          "path": "docs\\ORGANIZACAO_PROJETO.md",
+          "size": 7110
+        },
+        {
+          "name": "README.md",
+          "path": "docs\\README.md",
+          "size": 1954
+        },
+        {
+          "name": "REDUNDANCIAS_RELATORIO.md",
+          "path": "docs\\REDUNDANCIAS_RELATORIO.md",
+          "size": 7501
+        },
+        {
+          "name": "SURPRISE_PROJECT.md",
+          "path": "docs\\SURPRISE_PROJECT.md",
+          "size": 8245
+        }
+      ]
+    },
+    "scripts": {
+      "description": "Scripts utilitários",
+      "files": [
+        {
+          "name": "cleanup_containers.ps1",
+          "path": "scripts\\cleanup_containers.ps1",
+          "size": 1885
+        },
+        {
+          "name": "cleanup_containers.sh",
+          "path": "scripts\\cleanup_containers.sh",
+          "size": 868
+        },
+        {
+          "name": "consolidate_structure.ps1",
+          "path": "scripts\\consolidate_structure.ps1",
+          "size": 3640
+        },
+        {
+          "name": "git_sync.py",
+          "path": "scripts\\git_sync.py",
+          "size": 3662
+        },
+        {
+          "name": "git_sync_simple.py",
+          "path": "scripts\\git_sync_simple.py",
+          "size": 4371
+        },
+        {
+          "name": "map_to_obsidian.py",
+          "path": "scripts\\map_to_obsidian.py",
+          "size": 9813
+        },
+        {
+          "name": "master_demo.py",
+          "path": "scripts\\master_demo.py",
+          "size": 9064
+        },
+        {
+          "name": "organize_and_map.py",
+          "path": "scripts\\organize_and_map.py",
+          "size": 17747
+        },
+        {
+          "name": "organize_project.py",
+          "path": "scripts\\organize_project.py",
+          "size": 8962
+        },
+        {
+          "name": "rename_project.py",
+          "path": "scripts\\rename_project.py",
+          "size": 2972
+        },
+        {
+          "name": "run_dashboard.py",
+          "path": "scripts\\run_dashboard.py",
+          "size": 739
+        },
+        {
+          "name": "stop_random_containers.ps1",
+          "path": "scripts\\stop_random_containers.ps1",
+          "size": 1360
+        },
+        {
+          "name": "sync_obsidian_docs.py",
+          "path": "scripts\\sync_obsidian_docs.py",
+          "size": 7408
+        },
+        {
+          "name": "verificar_integracao_obsidian.py",
+          "path": "scripts\\verificar_integracao_obsidian.py",
+          "size": 3968
+        }
+      ]
+    },
+    "examples": {
+      "description": "Exemplos de uso",
+      "files": [
+        {
+          "name": "example_docker_agent_usage.py",
+          "path": "examples\\example_docker_agent_usage.py",
+          "size": 7527
+        }
+      ]
+    },
+    "front-end": {
+      "description": "Frontend Svelte",
+      "files": [
+        {
+          "name": "index.html",
+          "path": "front-end\\index.html",
+          "size": 383
+        },
+        {
+          "name": "jsconfig.json",
+          "path": "front-end\\jsconfig.json",
+          "size": 970
+        },
+        {
+          "name": "package-lock.json",
+          "path": "front-end\\package-lock.json",
+          "size": 65806
+        },
+        {
+          "name": "package.json",
+          "path": "front-end\\package.json",
+          "size": 466
+        },
+        {
+          "name": "postcss.config.js",
+          "path": "front-end\\postcss.config.js",
+          "size": 86
+        },
+        {
+          "name": "README.md",
+          "path": "front-end\\README.md",
+          "size": 3000
+        },
+        {
+          "name": "svelte.config.js",
+          "path": "front-end\\svelte.config.js",
+          "size": 235
+        },
+        {
+          "name": "tailwind.config.js",
+          "path": "front-end\\tailwind.config.js",
+          "size": 202
+        },
+        {
+          "name": "vite.config.js",
+          "path": "front-end\\vite.config.js",
+          "size": 242
+        },
+        {
+          "name": "extensions.json",
+          "path": "front-end\\.vscode\\extensions.json",
+          "size": 53
+        },
+        {
+          "name": "vite.svg",
+          "path": "front-end\\public\\vite.svg",
+          "size": 1497
+        },
+        {
+          "name": "app.css",
+          "path": "front-end\\src\\app.css",
+          "size": 397
+        },
+        {
+          "name": "App.svelte",
+          "path": "front-end\\src\\App.svelte",
+          "size": 5335
+        },
+        {
+          "name": "main.js",
+          "path": "front-end\\src\\main.js",
+          "size": 146
+        },
+        {
+          "name": "vite-env.d.ts",
+          "path": "front-end\\src\\vite-env.d.ts",
+          "size": 73
+        },
+        {
+          "name": "svelte.svg",
+          "path": "front-end\\src\\assets\\svelte.svg",
+          "size": 1950
+        },
+        {
+          "name": "chat.store.js",
+          "path": "front-end\\src\\lib\\chat.store.js",
+          "size": 2629
+        },
+        {
+          "name": "External.svelte",
+          "path": "front-end\\src\\lib\\External.svelte",
+          "size": 1192
+        },
+        {
+          "name": "generation.store.js",
+          "path": "front-end\\src\\lib\\generation.store.js",
+          "size": 1156
+        },
+        {
+          "name": "MdLink.svelte",
+          "path": "front-end\\src\\lib\\MdLink.svelte",
+          "size": 262
+        },
+        {
+          "name": "Modal.svelte",
+          "path": "front-end\\src\\lib\\Modal.svelte",
+          "size": 2026
+        },
+        {
+          "name": "bot.jpeg",
+          "path": "front-end\\src\\assets\\images\\bot.jpeg",
+          "size": 110015
+        },
+        {
+          "name": "me.jpeg",
+          "path": "front-end\\src\\assets\\images\\me.jpeg",
+          "size": 127281
+        }
+      ]
+    },
+    "Obsidian_guardar aqui": {
+      "description": "Documentação Obsidian",
+      "files": [
+        {
+          "name": "00-MAPA-DE-AGENTES.md",
+          "path": "Obsidian_guardar aqui\\00-MAPA-DE-AGENTES.md",
+          "size": 7515
+        },
+        {
+          "name": "01-Guia-Obsidian.md",
+          "path": "Obsidian_guardar aqui\\01-Guia-Obsidian.md",
+          "size": 6161
+        },
+        {
+          "name": "02-Guia-Cursor.md",
+          "path": "Obsidian_guardar aqui\\02-Guia-Cursor.md",
+          "size": 6425
+        },
+        {
+          "name": "03-Manual-Sistema-Agentes.md",
+          "path": "Obsidian_guardar aqui\\03-Manual-Sistema-Agentes.md",
+          "size": 10243
+        },
+        {
+          "name": "04-Como-Criar-Agentes.md",
+          "path": "Obsidian_guardar aqui\\04-Como-Criar-Agentes.md",
+          "size": 11370
+        },
+        {
+          "name": "OBSIDIAN-MCP-INTEGRATION.md",
+          "path": "Obsidian_guardar aqui\\OBSIDIAN-MCP-INTEGRATION.md",
+          "size": 3351
+        },
+        {
+          "name": "README_ESTRUTURA.md",
+          "path": "Obsidian_guardar aqui\\README_ESTRUTURA.md",
+          "size": 1910
+        },
+        {
+          "name": "README_SYNC_OBSIDIAN.md",
+          "path": "Obsidian_guardar aqui\\README_SYNC_OBSIDIAN.md",
+          "size": 2423
+        },
+        {
+          "name": "RESUMO-MAPA-AGENTES.md",
+          "path": "Obsidian_guardar aqui\\RESUMO-MAPA-AGENTES.md",
+          "size": 5214
+        },
+        {
+          "name": "RESUMO_ORGANIZACAO.md",
+          "path": "Obsidian_guardar aqui\\RESUMO_ORGANIZACAO.md",
+          "size": 6518
+        },
+        {
+          "name": "app.json",
+          "path": "Obsidian_guardar aqui\\.obsidian\\app.json",
+          "size": 2
+        },
+        {
+          "name": "appearance.json",
+          "path": "Obsidian_guardar aqui\\.obsidian\\appearance.json",
+          "size": 2
+        },
+        {
+          "name": "core-plugins.json",
+          "path": "Obsidian_guardar aqui\\.obsidian\\core-plugins.json",
+          "size": 696
+        },
+        {
+          "name": "graph.json",
+          "path": "Obsidian_guardar aqui\\.obsidian\\graph.json",
+          "size": 511
+        },
+        {
+          "name": "workspace.json",
+          "path": "Obsidian_guardar aqui\\.obsidian\\workspace.json",
+          "size": 5072
+        },
+        {
+          "name": "Docker-Integration.md",
+          "path": "Obsidian_guardar aqui\\Agentes\\Docker-Integration.md",
+          "size": 1545
+        },
+        {
+          "name": "Helper-System.md",
+          "path": "Obsidian_guardar aqui\\Agentes\\Helper-System.md",
+          "size": 3580
+        },
+        {
+          "name": "Kestra-Agent.md",
+          "path": "Obsidian_guardar aqui\\Agentes\\Kestra-Agent.md",
+          "size": 2347
+        },
+        {
+          "name": "Master-Agent.md",
+          "path": "Obsidian_guardar aqui\\Agentes\\Master-Agent.md",
+          "size": 3798
+        },
+        {
+          "name": "MCP-Manager.md",
+          "path": "Obsidian_guardar aqui\\Agentes\\MCP-Manager.md",
+          "size": 2537
+        },
+        {
+          "name": "Neo4j-GraphRAG.md",
+          "path": "Obsidian_guardar aqui\\Agentes\\Neo4j-GraphRAG.md",
+          "size": 2626
+        },
+        {
+          "name": "Obsidian-Integration.md",
+          "path": "Obsidian_guardar aqui\\Agentes\\Obsidian-Integration.md",
+          "size": 2255
+        },
+        {
+          "name": "Orchestrator.md",
+          "path": "Obsidian_guardar aqui\\Agentes\\Orchestrator.md",
+          "size": 4057
+        },
+        {
+          "name": "Bem-vindo.md",
+          "path": "Obsidian_guardar aqui\\Obsidian_guardar aqui\\Bem-vindo.md",
+          "size": 195
+        },
+        {
+          "name": "app.json",
+          "path": "Obsidian_guardar aqui\\Obsidian_guardar aqui\\.obsidian\\app.json",
+          "size": 2
+        },
+        {
+          "name": "appearance.json",
+          "path": "Obsidian_guardar aqui\\Obsidian_guardar aqui\\.obsidian\\appearance.json",
+          "size": 2
+        },
+        {
+          "name": "core-plugins.json",
+          "path": "Obsidian_guardar aqui\\Obsidian_guardar aqui\\.obsidian\\core-plugins.json",
+          "size": 696
+        },
+        {
+          "name": "graph.json",
+          "path": "Obsidian_guardar aqui\\Obsidian_guardar aqui\\.obsidian\\graph.json",
+          "size": 493
+        },
+        {
+          "name": "workspace.json",
+          "path": "Obsidian_guardar aqui\\Obsidian_guardar aqui\\.obsidian\\workspace.json",
+          "size": 5434
+        }
+      ]
+    }
+  },
+  "agents": [
+    {
+      "name": "agent_dashboard_ui",
+      "file": "src\\agents\\agent_dashboard_ui.py"
+    },
+    {
+      "name": "agent_helper_system",
+      "file": "src\\agents\\agent_helper_system.py"
+    },
+    {
+      "name": "db_manager",
+      "file": "src\\agents\\db_manager.py"
+    },
+    {
+      "name": "diagnostic_agent",
+      "file": "src\\agents\\diagnostic_agent.py"
+    },
+    {
+      "name": "git_integration",
+      "file": "src\\agents\\git_integration.py"
+    },
+    {
+      "name": "kestra_langchain_master",
+      "file": "src\\agents\\kestra_langchain_master.py"
+    },
+    {
+      "name": "mcp_docker_integration",
+      "file": "src\\agents\\mcp_docker_integration.py"
+    },
+    {
+      "name": "mcp_kestra_integration",
+      "file": "src\\agents\\mcp_kestra_integration.py"
+    },
+    {
+      "name": "mcp_manager",
+      "file": "src\\agents\\mcp_manager.py"
+    },
+    {
+      "name": "mcp_manager_ui",
+      "file": "src\\agents\\mcp_manager_ui.py"
+    },
+    {
+      "name": "mcp_neo4j_integration",
+      "file": "src\\agents\\mcp_neo4j_integration.py"
+    },
+    {
+      "name": "mcp_obsidian_integration",
+      "file": "src\\agents\\mcp_obsidian_integration.py"
+    },
+    {
+      "name": "orchestrator",
+      "file": "src\\agents\\orchestrator.py"
+    },
+    {
+      "name": "resolution_agent",
+      "file": "src\\agents\\resolution_agent.py"
+    }
+  ],
+  "apps": [
+    {
+      "name": "api",
+      "file": "src\\apps\\api.py"
+    },
+    {
+      "name": "bot",
+      "file": "src\\apps\\bot.py"
+    },
+    {
+      "name": "chains",
+      "file": "src\\apps\\chains.py"
+    },
+    {
+      "name": "loader",
+      "file": "src\\apps\\loader.py"
+    },
+    {
+      "name": "pdf_bot",
+      "file": "src\\apps\\pdf_bot.py"
+    },
+    {
+      "name": "utils",
+      "file": "src\\apps\\utils.py"
+    }
+  ],
+  "docs": [
+    {
+      "name": "AGENT_DASHBOARD_README",
+      "file": "docs\\AGENT_DASHBOARD_README.md"
+    },
+    {
+      "name": "ARCHITECTURE",
+      "file": "docs\\ARCHITECTURE.md"
+    },
+    {
+      "name": "ARCHITECTURE_DEEP_DIVE",
+      "file": "docs\\ARCHITECTURE_DEEP_DIVE.md"
+    },
+    {
+      "name": "DASHBOARD_RESUMO",
+      "file": "docs\\DASHBOARD_RESUMO.md"
+    },
+    {
+      "name": "DASHBOARD_SETUP",
+      "file": "docs\\DASHBOARD_SETUP.md"
+    },
+    {
+      "name": "DB_MANAGER_README",
+      "file": "docs\\DB_MANAGER_README.md"
+    },
+    {
+      "name": "DOCKER_CLEANUP_SUMMARY",
+      "file": "docs\\DOCKER_CLEANUP_SUMMARY.md"
+    },
+    {
+      "name": "DOCKER_INTEGRATION_README",
+      "file": "docs\\DOCKER_INTEGRATION_README.md"
+    },
+    {
+      "name": "DOCKER_OPTIMIZATION",
+      "file": "docs\\DOCKER_OPTIMIZATION.md"
+    },
+    {
+      "name": "ENGINEERING_GUIDE",
+      "file": "docs\\ENGINEERING_GUIDE.md"
+    },
+    {
+      "name": "EXECUTION_PLAN",
+      "file": "docs\\EXECUTION_PLAN.md"
+    },
+    {
+      "name": "GIT_INTEGRATION_README",
+      "file": "docs\\GIT_INTEGRATION_README.md"
+    },
+    {
+      "name": "MASTER_AGENT_README",
+      "file": "docs\\MASTER_AGENT_README.md"
+    },
+    {
+      "name": "MCP_ARCHITECTURE",
+      "file": "docs\\MCP_ARCHITECTURE.md"
+    },
+    {
+      "name": "MCP_README",
+      "file": "docs\\MCP_README.md"
+    },
+    {
+      "name": "ORCHESTRATOR_SUMMARY",
+      "file": "docs\\ORCHESTRATOR_SUMMARY.md"
+    },
+    {
+      "name": "ORGANIZACAO_FINAL",
+      "file": "docs\\ORGANIZACAO_FINAL.md"
+    },
+    {
+      "name": "ORGANIZACAO_PROJETO",
+      "file": "docs\\ORGANIZACAO_PROJETO.md"
+    },
+    {
+      "name": "README",
+      "file": "docs\\README.md"
+    },
+    {
+      "name": "REDUNDANCIAS_RELATORIO",
+      "file": "docs\\REDUNDANCIAS_RELATORIO.md"
+    },
+    {
+      "name": "SURPRISE_PROJECT",
+      "file": "docs\\SURPRISE_PROJECT.md"
+    }
+  ],
+  "scripts": [
+    {
+      "name": "git_sync",
+      "file": "scripts\\git_sync.py"
+    },
+    {
+      "name": "git_sync_simple",
+      "file": "scripts\\git_sync_simple.py"
+    },
+    {
+      "name": "map_to_obsidian",
+      "file": "scripts\\map_to_obsidian.py"
+    },
+    {
+      "name": "master_demo",
+      "file": "scripts\\master_demo.py"
+    },
+    {
+      "name": "organize_and_map",
+      "file": "scripts\\organize_and_map.py"
+    },
+    {
+      "name": "organize_project",
+      "file": "scripts\\organize_project.py"
+    },
+    {
+      "name": "rename_project",
+      "file": "scripts\\rename_project.py"
+    },
+    {
+      "name": "run_dashboard",
+      "file": "scripts\\run_dashboard.py"
+    },
+    {
+      "name": "sync_obsidian_docs",
+      "file": "scripts\\sync_obsidian_docs.py"
+    },
+    {
+      "name": "verificar_integracao_obsidian",
+      "file": "scripts\\verificar_integracao_obsidian.py"
+    }
+  ]
+}

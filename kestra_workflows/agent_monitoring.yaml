@@ -1,0 +1,59 @@
+id: agent-monitoring
+namespace: mcp
+description: Workflow para monitorar e visualizar status dos agentes do sistema IA-Test
+
+tasks:
+  - id: get-agents-status
+    type: io.kestra.plugin.scripts.python.Commands
+    description: Obtém status de todos os agentes
+    commands:
+      - python -c "
+        import sys
+        from pathlib import Path
+        project_root = Path('{{workingDir}}')
+        sys.path.insert(0, str(project_root))
+        
+        from src.agents import get_orchestrator
+        orchestrator = get_orchestrator()
+        status = orchestrator.get_system_status()
+        
+        import json
+        print(json.dumps(status, indent=2, default=str))
+        "
+    outputs:
+      - id: agents_status
+        value: "{{outputs.get-agents-status.stdout}}"
+
+  - id: generate-report
+    type: io.kestra.plugin.scripts.python.Commands
+    description: Gera relatório visual dos agentes
+    commands:
+      - python -c "
+        import sys
+        from pathlib import Path
+        import json
+        project_root = Path('{{workingDir}}')
+        sys.path.insert(0, str(project_root))
+        
+        from src.agents import get_orchestrator
+        orchestrator = get_orchestrator()
+        status = orchestrator.get_system_status()
+        
+        report = {
+            'total_agents': status.get('orchestrator', {}).get('total_tasks', 0),
+            'active_agents': len([a for a in status.values() if isinstance(a, dict) and a.get('status') == 'active']),
+            'timestamp': '{{execution.startDate}}'
+        }
+        
+        print(json.dumps(report, indent=2))
+        "
+    outputs:
+      - id: report
+        value: "{{outputs.generate-report.stdout}}"
+
+triggers:
+  - id: schedule
+    type: io.kestra.core.models.triggers.types.Schedule
+    cron: "*/5 * * * *"  # A cada 5 minutos
+    description: Monitora agentes a cada 5 minutos
+

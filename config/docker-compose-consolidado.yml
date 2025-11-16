@@ -1,0 +1,246 @@
+version: '3.8'
+
+# ============================================
+# DOCKER COMPOSE CONSOLIDADO
+# N8N + Dokploy + Serviços Compartilhados
+# ============================================
+# 
+# Este arquivo consolida os containers do N8N e Dokploy
+# em uma única configuração para facilitar gerenciamento
+#
+# Uso:
+#   docker compose -f config/docker-compose-consolidado.yml up -d
+#   docker compose -f config/docker-compose-consolidado.yml down
+
+# Variáveis compartilhadas
+x-common-variables: &common-vars
+  # N8N
+  N8N_BASIC_AUTH_ACTIVE: ${N8N_BASIC_AUTH_ACTIVE:-false}
+  N8N_HOST: ${N8N_HOST:-localhost}
+  N8N_PORT: ${N8N_PORT:-5678}
+  N8N_PROTOCOL: ${N8N_PROTOCOL:-http}
+  WEBHOOK_URL: ${WEBHOOK_URL:-http://localhost:5678/}
+  
+  # Database
+  DB_TYPE: ${DB_TYPE:-postgresdb}
+  DB_POSTGRESDB_HOST: ${DB_POSTGRESDB_HOST:-n8n-postgres}
+  DB_POSTGRESDB_PORT: ${DB_POSTGRESDB_PORT:-5432}
+  DB_POSTGRESDB_DATABASE: ${DB_POSTGRESDB_DATABASE:-n8n}
+  DB_POSTGRESDB_USER: ${DB_POSTGRESDB_USER:-n8n}
+  DB_POSTGRESDB_PASSWORD: ${DB_POSTGRESDB_PASSWORD:-n8n}
+  
+  # Redis
+  QUEUE_BULL_REDIS_HOST: ${QUEUE_BULL_REDIS_HOST:-n8n-redis}
+  QUEUE_BULL_REDIS_PORT: ${QUEUE_BULL_REDIS_PORT:-6379}
+  QUEUE_BULL_REDIS_PASSWORD: ${QUEUE_BULL_REDIS_PASSWORD:-}
+  
+  # Executions
+  EXECUTIONS_PROCESS: ${EXECUTIONS_PROCESS:-main}
+  EXECUTIONS_MODE: ${EXECUTIONS_MODE:-regular}
+  
+  # Dokploy
+  DOKPLOY_DATABASE_URL: ${DOKPLOY_DATABASE_URL:-postgresql://dokploy:dokploy@dokploy-postgres:5432/dokploy}
+  DOKPLOY_REDIS_URL: ${DOKPLOY_REDIS_URL:-redis://dokploy-redis:6379}
+
+x-common-network: &common-network
+  networks:
+    - consolidated-network
+
+services:
+  # ============================================
+  # N8N - Stack Completa
+  # ============================================
+  # NOTA: N8N usa o PostgreSQL compartilhado do Dokploy
+  
+  n8n-redis:
+    image: redis:7-alpine
+    container_name: n8n-redis-consolidado
+    command: redis-server --appendonly yes
+    volumes:
+      - n8n_redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    <<: *common-network
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n-consolidado
+    depends_on:
+      dokploy-postgres:
+        condition: service_healthy
+      n8n-redis:
+        condition: service_healthy
+    environment:
+      <<: *common-vars
+      DB_POSTGRESDB_HOST: dokploy-postgres-consolidado
+      DB_POSTGRESDB_PORT: 5432
+      DB_POSTGRESDB_DATABASE: n8n
+      DB_POSTGRESDB_USER: ${N8N_DB_USER:-n8n}
+      DB_POSTGRESDB_PASSWORD: ${N8N_DB_PASSWORD:-n8n}
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    restart: unless-stopped
+    <<: *common-network
+
+  n8n-worker:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n-worker-consolidado
+    depends_on:
+      dokploy-postgres:
+        condition: service_healthy
+      n8n-redis:
+        condition: service_healthy
+    environment:
+      <<: *common-vars
+      DB_POSTGRESDB_HOST: dokploy-postgres-consolidado
+      DB_POSTGRESDB_PORT: 5432
+      DB_POSTGRESDB_DATABASE: n8n
+      DB_POSTGRESDB_USER: ${N8N_DB_USER:-n8n}
+      DB_POSTGRESDB_PASSWORD: ${N8N_DB_PASSWORD:-n8n}
+      EXECUTIONS_PROCESS: main
+      EXECUTIONS_MODE: queue
+    volumes:
+      - n8n_data:/home/node/.n8n
+    restart: unless-stopped
+    <<: *common-network
+
+  n8n-runner:
+    image: n8nio/runners:nightly
+    container_name: n8n-runner-consolidado
+    depends_on:
+      n8n:
+        condition: service_started
+    environment:
+      N8N_BASE_URL: ${N8N_BASE_URL:-http://n8n:5678}
+    restart: unless-stopped
+    <<: *common-network
+
+  # Ollama para N8N (opcional)
+  n8n-ollama:
+    image: ollama/ollama:latest
+    container_name: n8n-ollama-consolidado
+    profiles: ["ollama"]
+    ports:
+      - "11434:11434"
+    volumes:
+      - n8n_ollama_data:/root/.ollama
+    restart: unless-stopped
+    <<: *common-network
+
+  # ============================================
+  # Dokploy - Stack Completa
+  # ============================================
+  
+  dokploy-postgres:
+    image: postgres:16
+    container_name: dokploy-postgres-consolidado
+    environment:
+      POSTGRES_USER: ${DOKPLOY_DB_USER:-dokploy}
+      POSTGRES_PASSWORD: ${DOKPLOY_DB_PASSWORD:-dokploy}
+      POSTGRES_DB: ${DOKPLOY_DB_NAME:-dokploy}
+      # Cria banco N8N no mesmo PostgreSQL
+      POSTGRES_MULTIPLE_DATABASES: ${POSTGRES_MULTIPLE_DATABASES:-n8n}
+      N8N_DB_USER: ${N8N_DB_USER:-n8n}
+      N8N_DB_PASSWORD: ${N8N_DB_PASSWORD:-n8n}
+    volumes:
+      - dokploy_postgres_data:/var/lib/postgresql/data
+      - ./scripts/setup_postgres_multidb.sh:/docker-entrypoint-initdb.d/setup_multidb.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DOKPLOY_DB_USER:-dokploy}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    <<: *common-network
+
+  dokploy-redis:
+    image: redis:7
+    container_name: dokploy-redis-consolidado
+    command: redis-server --appendonly yes
+    volumes:
+      - dokploy_redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    <<: *common-network
+
+  dokploy:
+    image: dokploy/dokploy:latest
+    container_name: dokploy-consolidado
+    depends_on:
+      dokploy-postgres:
+        condition: service_healthy
+      dokploy-redis:
+        condition: service_healthy
+    environment:
+      <<: *common-vars
+      DATABASE_URL: ${DOKPLOY_DATABASE_URL:-postgresql://dokploy:dokploy@dokploy-postgres:5432/dokploy}
+      REDIS_URL: ${DOKPLOY_REDIS_URL:-redis://dokploy-redis:6379}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - dokploy_data:/app/data
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    <<: *common-network
+
+  # Traefik (opcional - desabilitado por padrão devido a rate limits)
+  traefik:
+    image: traefik:v3.5.0
+    container_name: traefik-consolidado
+    profiles: ["traefik"]
+    command:
+      - "--api.dashboard=true"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"  # Dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: unless-stopped
+    <<: *common-network
+
+# ============================================
+# NETWORKS
+# ============================================
+networks:
+  consolidated-network:
+    name: consolidated-network
+    driver: bridge
+
+# ============================================
+# VOLUMES
+# ============================================
+volumes:
+  # N8N
+  n8n_postgres_data:
+    name: n8n-postgres-data-consolidado
+  n8n_redis_data:
+    name: n8n-redis-data-consolidado
+  n8n_data:
+    name: n8n-data-consolidado
+  n8n_ollama_data:
+    name: n8n-ollama-data-consolidado
+  
+  # Dokploy
+  dokploy_postgres_data:
+    name: dokploy-postgres-data-consolidado
+  dokploy_redis_data:
+    name: dokploy-redis-data-consolidado
+  dokploy_data:
+    name: dokploy-data-consolidado
+

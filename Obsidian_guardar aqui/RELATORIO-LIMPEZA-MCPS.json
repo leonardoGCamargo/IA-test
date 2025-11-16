@@ -1,0 +1,11 @@
+{
+  "total_configurados": 0,
+  "total_no_codigo": 19,
+  "total_nao_usados": 0,
+  "mcps_para_remover": [],
+  "mcps_essenciais": [
+    "neo4j",
+    "obsidian",
+    "git"
+  ]
+}

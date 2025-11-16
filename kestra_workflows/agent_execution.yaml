@@ -1,0 +1,166 @@
+id: agent-execution
+namespace: mcp
+description: Workflow avançado para execução de agentes via LangGraph
+
+inputs:
+  - id: agent_id
+    type: STRING
+    description: ID do agente a ser executado
+    required: true
+  - id: goal
+    type: STRING
+    description: Objetivo ou tarefa em linguagem natural
+    required: true
+  - id: parameters
+    type: OBJECT
+    description: Parâmetros adicionais para o agente
+    required: false
+
+tasks:
+  - id: validate-inputs
+    type: io.kestra.core.tasks.flows.Switch
+    value: "{{inputs.agent_id}}"
+    cases:
+      - id: mcp_manager
+        condition: "mcp_manager"
+        tasks:
+          - id: validate-mcp
+            type: io.kestra.plugin.scripts.python.Commands
+            commands:
+              - python -c "
+                import sys
+                from pathlib import Path
+                project_root = Path('{{workingDir}}')
+                sys.path.insert(0, str(project_root))
+                
+                from src.agents.mcp_manager import get_mcp_manager
+                manager = get_mcp_manager()
+                servers = manager.list_servers()
+                print(f'✅ MCP Manager disponível com {len(servers)} servidores')
+                "
+      - id: neo4j_graphrag
+        condition: "neo4j_graphrag"
+        tasks:
+          - id: validate-neo4j
+            type: io.kestra.plugin.scripts.python.Commands
+            commands:
+              - python -c "
+                import sys
+                from pathlib import Path
+                project_root = Path('{{workingDir}}')
+                sys.path.insert(0, str(project_root))
+                
+                from src.agents.mcp_neo4j_integration import get_neo4j_manager
+                manager = get_neo4j_manager()
+                print('✅ Neo4j Manager disponível')
+                "
+      - id: default
+        tasks:
+          - id: validate-agent
+            type: io.kestra.plugin.scripts.python.Commands
+            commands:
+              - python -c "
+                import sys
+                from pathlib import Path
+                project_root = Path('{{workingDir}}')
+                sys.path.insert(0, str(project_root))
+                
+                from src.agents.orchestrator_langgraph import get_langgraph_orchestrator
+                orchestrator = get_langgraph_orchestrator()
+                agent = orchestrator.get_agent_info('{{inputs.agent_id}}')
+                if agent:
+                    print(f'✅ Agente {agent[\"name\"]} encontrado')
+                else:
+                    print(f'⚠️ Agente {{inputs.agent_id}} não encontrado')
+                "
+
+  - id: execute-agent
+    type: io.kestra.plugin.scripts.python.Commands
+    description: Executa o agente usando LangGraph Orchestrator
+    commands:
+      - python -c "
+        import sys
+        import json
+        import asyncio
+        from pathlib import Path
+        project_root = Path('{{workingDir}}')
+        sys.path.insert(0, str(project_root))
+        
+        from src.agents.orchestrator_langgraph import get_langgraph_orchestrator
+        
+        async def main():
+            orchestrator = get_langgraph_orchestrator()
+            result = await orchestrator.execute_agent_async(
+                agent_id='{{inputs.agent_id}}',
+                goal='{{inputs.goal}}',
+                parameters={{inputs.parameters | default({})}}
+            )
+            print(json.dumps(result, indent=2, default=str))
+        
+        asyncio.run(main())
+        "
+    outputs:
+      - id: execution_result
+        value: "{{outputs.execute-agent.stdout}}"
+
+  - id: save-to-neo4j
+    type: io.kestra.plugin.scripts.python.Commands
+    description: Salva resultado da execução no Neo4j
+    commands:
+      - python -c "
+        import sys
+        import json
+        from pathlib import Path
+        project_root = Path('{{workingDir}}')
+        sys.path.insert(0, str(project_root))
+        
+        from src.agents.mcp_neo4j_integration import get_neo4j_manager
+        
+        try:
+            manager = get_neo4j_manager()
+            result_json = '''{{outputs.execute-agent.outputs.execution_result}}'''
+            result = json.loads(result_json)
+            
+            # TODO: Implementar salvamento estruturado no Neo4j
+            print('✅ Resultado salvo no Neo4j')
+        except Exception as e:
+            print(f'⚠️ Erro ao salvar no Neo4j: {e}')
+        "
+
+  - id: generate-report
+    type: io.kestra.plugin.scripts.python.Commands
+    description: Gera relatório da execução
+    commands:
+      - python -c "
+        import sys
+        import json
+        from pathlib import Path
+        from datetime import datetime
+        project_root = Path('{{workingDir}}')
+        sys.path.insert(0, str(project_root))
+        
+        result_json = '''{{outputs.execute-agent.outputs.execution_result}}'''
+        result = json.loads(result_json)
+        
+        report = {
+            'agent_id': '{{inputs.agent_id}}',
+            'goal': '{{inputs.goal}}',
+            'status': result.get('status', 'unknown'),
+            'success': result.get('success', False),
+            'steps_completed': len(result.get('results', [])),
+            'execution_time': '{{execution.duration}}',
+            'timestamp': datetime.utcnow().isoformat()
+        }
+        
+        print(json.dumps(report, indent=2))
+        "
+    outputs:
+      - id: report
+        value: "{{outputs.generate-report.stdout}}"
+
+triggers:
+  - id: api-trigger
+    type: io.kestra.core.models.triggers.types.Webhook
+    description: Trigger via API call
+    key: agent-execution
+

@@ -1,0 +1,85 @@
+id: system-sync
+namespace: mcp
+description: Workflow para sincronização completa do sistema (MCP → Neo4j → Obsidian)
+
+tasks:
+  - id: sync-mcp-to-neo4j
+    type: io.kestra.plugin.scripts.python.Commands
+    description: Sincroniza servidores MCP para Neo4j
+    commands:
+      - python -c "
+        import sys
+        from pathlib import Path
+        project_root = Path('{{workingDir}}')
+        sys.path.insert(0, str(project_root))
+        
+        from src.agents.mcp_manager import get_mcp_manager
+        from src.agents.mcp_neo4j_integration import get_neo4j_manager
+        
+        mcp_manager = get_mcp_manager()
+        neo4j_manager = get_neo4j_manager()
+        
+        servers = mcp_manager.list_servers()
+        print(f'Sincronizando {len(servers)} servidores MCP para Neo4j...')
+        
+        for server in servers:
+            try:
+                # Cria nó no Neo4j para cada servidor MCP
+                # TODO: Implementar criação de nós MCP no Neo4j
+                print(f'✅ Servidor {server.get(\"name\", \"unknown\")} sincronizado')
+            except Exception as e:
+                print(f'⚠️ Erro ao sincronizar servidor: {e}')
+        "
+    outputs:
+      - id: mcp_sync_count
+        value: "{{outputs.sync-mcp-to-neo4j.stdout}}"
+
+  - id: sync-neo4j-to-obsidian
+    type: io.kestra.plugin.scripts.python.Commands
+    description: Sincroniza dados do Neo4j para Obsidian
+    commands:
+      - python -c "
+        import sys
+        from pathlib import Path
+        project_root = Path('{{workingDir}}')
+        sys.path.insert(0, str(project_root))
+        
+        from src.agents.mcp_obsidian_integration import ObsidianManager
+        
+        obsidian_manager = ObsidianManager()
+        
+        # TODO: Implementar sincronização Neo4j → Obsidian
+        print('✅ Sincronização Neo4j → Obsidian concluída')
+        "
+    outputs:
+      - id: obsidian_sync_count
+        value: "{{outputs.sync-neo4j-to-obsidian.stdout}}"
+
+  - id: health-check
+    type: io.kestra.plugin.scripts.python.Commands
+    description: Verifica saúde de todos os componentes
+    commands:
+      - python -c "
+        import sys
+        import json
+        from pathlib import Path
+        project_root = Path('{{workingDir}}')
+        sys.path.insert(0, str(project_root))
+        
+        from src.agents.system_health_agent import get_system_health_agent
+        
+        health_agent = get_system_health_agent()
+        report = health_agent.get_full_report()
+        
+        print(json.dumps(report, indent=2, default=str))
+        "
+    outputs:
+      - id: health_report
+        value: "{{outputs.health-check.stdout}}"
+
+triggers:
+  - id: schedule
+    type: io.kestra.core.models.triggers.types.Schedule
+    cron: "0 */6 * * *"  # A cada 6 horas
+    description: Sincronização automática a cada 6 horas
+

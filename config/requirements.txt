@@ -1,0 +1,57 @@
+python-dotenv
+wikipedia
+tiktoken
+neo4j
+streamlit
+Pillow
+fastapi
+PyPDF2
+pydantic
+uvicorn
+sse-starlette
+boto3
+streamlit==1.32.1
+# missing from the langchain base image?
+langchain-openai==0.3.8
+langchain-community==0.3.19
+langchain-google-genai==2.0.11
+langchain-ollama==0.2.3
+langchain-huggingface==0.1.2
+langchain-aws==0.2.15
+langchain-neo4j==0.4.0
+langgraph>=0.2.0
+python-socketio>=5.10.0
+python-multipart>=0.0.6
+typing-extensions>=4.8.0
+pyvis>=0.3.2
+networkx>=3.0
+PyYAML>=6.0
+# Database Manager dependencies
+supabase>=2.0.0  # Para Supabase
+psycopg2-binary>=2.9.0  # Para Neon (PostgreSQL)
+pymongo>=4.5.0  # Para MongoDB
+pgvector>=0.2.0  # Para vector stores PostgreSQL
+# Diagnostic and Resolution Agent dependencies
+requests>=2.31.0  # Para verificação de conexões
+# Dashboard dependencies
+plotly>=5.18.0  # Para gráficos interativos
+pandas>=2.0.0  # Para manipulação de dados
+streamlit-option-menu>=0.3.12  # Para menu lateral
+# Testing dependencies
+playwright>=1.40.0  # Para testes E2E
+pytest-playwright>=0.4.3  # Integração pytest com playwright
+# Observability and Monitoring
+langsmith>=0.1.0  # LangChain tracing e observabilidade
+structlog>=23.2.0  # Logging estruturado
+prometheus-client>=0.19.0  # Métricas
+# Cache and Performance
+redis>=5.0.0  # Cache distribuído e task queue
+# Task Queue
+celery>=5.3.0  # Task queue persistente
+# Rate Limiting
+slowapi>=0.1.9  # Rate limiting para FastAPI
+# Security (Important)
+fastapi-users>=12.0.0  # Autenticação e autorização
+python-jose[cryptography]>=3.3.0  # JWT tokens
+# Error Tracking (Important)
+sentry-sdk>=2.0.0  # Error tracking e monitoramento
