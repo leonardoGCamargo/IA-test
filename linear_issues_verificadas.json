@@ -1,0 +1,626 @@
+[
+  {
+    "id": "c7226160-b31b-403c-8063-ca319197fafd",
+    "identifier": "MY-52",
+    "title": "047: Performance Monitoring",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-52/047-performance-monitoring",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:42.681Z"
+  },
+  {
+    "id": "3f33da78-db99-4b6c-b680-b61485890365",
+    "identifier": "MY-51",
+    "title": "046: Advanced Security",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-51/046-advanced-security",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:39.623Z"
+  },
+  {
+    "id": "2d87f2e7-f5e8-4563-8806-b2b24ed382b0",
+    "identifier": "MY-50",
+    "title": "045: Collaboration Features",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-50/045-collaboration-features",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:38.330Z"
+  },
+  {
+    "id": "eb9ea1ca-acc4-4c91-aaaa-a99903cf6845",
+    "identifier": "MY-49",
+    "title": "044: Agent Templates",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-49/044-agent-templates",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:37.403Z"
+  },
+  {
+    "id": "29eed211-1872-4477-8955-abcf9bf8284c",
+    "identifier": "MY-48",
+    "title": "043: Graph Visualization",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-48/043-graph-visualization",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:36.080Z"
+  },
+  {
+    "id": "9b8951c5-a963-4ec0-afc8-95bb45fecd09",
+    "identifier": "MY-47",
+    "title": "042: Advanced Caching",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-47/042-advanced-caching",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:35.190Z"
+  },
+  {
+    "id": "7e4459d7-6654-43fd-9467-51507f6c1e5f",
+    "identifier": "MY-46",
+    "title": "041: A/B Testing",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-46/041-ab-testing",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:34.307Z"
+  },
+  {
+    "id": "f8b75fb4-0c08-4da0-9c92-ff52accbe206",
+    "identifier": "MY-45",
+    "title": "040: Cost Tracking",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-45/040-cost-tracking",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:33.060Z"
+  },
+  {
+    "id": "4d209e92-7f25-48ab-ba0b-edeffb1abb1f",
+    "identifier": "MY-44",
+    "title": "039: Agent Marketplace",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-44/039-agent-marketplace",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:32.135Z"
+  },
+  {
+    "id": "8cb14e6e-4c51-4ae9-ab04-0beaf78245f7",
+    "identifier": "MY-43",
+    "title": "038: Workflow Builder UI",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-43/038-workflow-builder-ui",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:31.225Z"
+  },
+  {
+    "id": "eeb026be-e7f0-4189-845d-75a9c9acd27e",
+    "identifier": "MY-42",
+    "title": "037: Advanced Search",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-42/037-advanced-search",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:29.671Z"
+  },
+  {
+    "id": "09d08a3e-4f23-4a4e-a5ff-5fcaaeee721b",
+    "identifier": "MY-41",
+    "title": "036: Mobile App",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-41/036-mobile-app",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:28.790Z"
+  },
+  {
+    "id": "f8485419-8746-47c5-94bd-5db604e8aef8",
+    "identifier": "MY-40",
+    "title": "035: Documentation Site",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-40/035-documentation-site",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:27.920Z"
+  },
+  {
+    "id": "93616fb8-e5e7-4519-b6cd-41f48cb097fa",
+    "identifier": "MY-39",
+    "title": "034: Automated Testing",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-39/034-automated-testing",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:26.210Z"
+  },
+  {
+    "id": "56f44f4a-7dcf-4dd3-943e-d91e75ebb55f",
+    "identifier": "MY-38",
+    "title": "033: Monitoring Dashboard",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-38/033-monitoring-dashboard",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:24.855Z"
+  },
+  {
+    "id": "1503a0d0-e3a6-4e98-a14d-8e9e6ca623a3",
+    "identifier": "MY-37",
+    "title": "032: API Documentation",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-37/032-api-documentation",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:23.970Z"
+  },
+  {
+    "id": "a6632ddf-0d3e-483f-81cc-b8e88c561deb",
+    "identifier": "MY-36",
+    "title": "031: Multi-tenancy",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-36/031-multi-tenancy",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:22.681Z"
+  },
+  {
+    "id": "d1a189ab-c9d8-4a3e-8efd-5244afbe040e",
+    "identifier": "MY-35",
+    "title": "030: Plugin System",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-35/030-plugin-system",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:21.729Z"
+  },
+  {
+    "id": "1bc37985-506c-44e7-9922-c5938d0d57ae",
+    "identifier": "MY-34",
+    "title": "029: Analytics Dashboard",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-34/029-analytics-dashboard",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:20.845Z"
+  },
+  {
+    "id": "09babd1d-6bcc-469f-aaff-07852d375b89",
+    "identifier": "MY-33",
+    "title": "028: Export/Import",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-33/028-exportimport",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:19.550Z"
+  },
+  {
+    "id": "7d494bbd-4a56-4e94-a4d1-01b6dd2e627f",
+    "identifier": "MY-32",
+    "title": "027: Notificações",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-32/027-notificacoes",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:18.285Z"
+  },
+  {
+    "id": "c64929fc-5d78-41f0-a043-a54c2e226682",
+    "identifier": "MY-31",
+    "title": "026: Internacionalização (i18n)",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-31/026-internacionalizacao-i18n",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:17.312Z"
+  },
+  {
+    "id": "4d0a9f00-9a81-4914-b6a2-664ac007ec35",
+    "identifier": "MY-30",
+    "title": "025: UI/UX Improvements",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-30/025-uiux-improvements",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:16.398Z"
+  },
+  {
+    "id": "c318f29c-b81f-4c51-92d9-2ac7da0db30c",
+    "identifier": "MY-29",
+    "title": "024: Performance Optimization",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-29/024-performance-optimization",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:36:15.007Z"
+  },
+  {
+    "id": "8ebf8d5e-aa6e-4b9a-969e-6476cfcff618",
+    "identifier": "MY-28",
+    "title": "024 a L-047: Melhorias Opcionais",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-28/024-a-l-047-melhorias-opcionais",
+    "priority": 3,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:35:32.578Z"
+  },
+  {
+    "id": "835480f5-d70e-4f5f-8311-4b7a22f56654",
+    "identifier": "MY-27",
+    "title": "023: Falta de Filtros e Busca",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-27/023-falta-de-filtros-e-busca",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:35:31.140Z"
+  },
+  {
+    "id": "bb6d6c55-bdea-4b0e-92ff-814693d7460b",
+    "identifier": "MY-26",
+    "title": "022: Falta de Paginação",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-26/022-falta-de-paginacao",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:35:28.052Z"
+  },
+  {
+    "id": "8740fe68-533e-42e2-99ba-d7d17544b7ab",
+    "identifier": "MY-25",
+    "title": "021: Falta de Validação de Inputs",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-25/021-falta-de-validacao-de-inputs",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:35:24.717Z"
+  },
+  {
+    "id": "e3bb3ac8-c4a6-448d-ab21-56dde545a1f4",
+    "identifier": "MY-24",
+    "title": "020: Falta de Versionamento de API",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-24/020-falta-de-versionamento-de-api",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:35:21.559Z"
+  },
+  {
+    "id": "a929c361-0ee4-41e5-ad19-013fb1d4f31a",
+    "identifier": "MY-23",
+    "title": "019: Falta de Backup Automático",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-23/019-falta-de-backup-automatico",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:35:19.381Z"
+  },
+  {
+    "id": "a7e35430-01ce-48cc-90be-cba1256760d5",
+    "identifier": "MY-22",
+    "title": "018: Falta de Métricas de Negócio",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-22/018-falta-de-metricas-de-negocio",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:35:16.336Z"
+  },
+  {
+    "id": "4ed62cfe-080f-4f1f-b872-833dd9779693",
+    "identifier": "MY-21",
+    "title": "017: Logging Não Estruturado",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-21/017-logging-nao-estruturado",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:35:13.625Z"
+  },
+  {
+    "id": "4d7bc96c-f9e3-409c-be34-794ab824f828",
+    "identifier": "MY-20",
+    "title": "016: Falta de CI/CD",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-20/016-falta-de-cicd",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:35:10.552Z"
+  },
+  {
+    "id": "c9f55c6d-5bce-464f-9595-3e8f4d92cb8b",
+    "identifier": "MY-19",
+    "title": "015: Variáveis de Ambiente Não Validadas",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-19/015-variaveis-de-ambiente-nao-validadas",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:35:07.305Z"
+  },
+  {
+    "id": "c17e402f-f328-421e-aafc-7d54a6b82673",
+    "identifier": "MY-18",
+    "title": "014: Código Duplicado",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-18/014-codigo-duplicado",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:35:04.077Z"
+  },
+  {
+    "id": "49015f6c-a05a-456a-9a5f-9e5c8e197560",
+    "identifier": "MY-17",
+    "title": "013: Frontend Next.js Incompleto",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-17/013-frontend-nextjs-incompleto",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:35:01.791Z"
+  },
+  {
+    "id": "03932f13-296d-4aa6-91bf-8b5c839b20e5",
+    "identifier": "MY-16",
+    "title": "012: Docker Compose Pode Ser Otimizado",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-16/012-docker-compose-pode-ser-otimizado",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:34:58.568Z"
+  },
+  {
+    "id": "38fc15c7-ebd7-4fd1-933d-f07b82cdf729",
+    "identifier": "MY-15",
+    "title": "011: Documentação Desatualizada",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-15/011-documentacao-desatualizada",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:34:55.260Z"
+  },
+  {
+    "id": "d662704e-4ea0-4d7d-b7fa-0e472b65fa30",
+    "identifier": "MY-14",
+    "title": "010: Testes Insuficientes",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-14/010-testes-insuficientes",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:34:52.483Z"
+  },
+  {
+    "id": "b818a0c8-c3bf-4367-bab7-143d74f0f876",
+    "identifier": "MY-13",
+    "title": "009: Persistência de Memória Parcial",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-13/009-persistencia-de-memoria-parcial",
+    "priority": 2,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:34:49.215Z"
+  },
+  {
+    "id": "4fb3b6b9-56f8-4d57-a54c-09b7f43f05df",
+    "identifier": "MY-12",
+    "title": "008: WebSocket Implementation Incompleta",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-12/008-websocket-implementation-incompleta",
+    "priority": 1,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:34:46.195Z"
+  },
+  {
+    "id": "e27c341c-4f21-4a80-9e1e-c1cd9159e71b",
+    "identifier": "MY-11",
+    "title": "007: Integração Kestra Incompleta",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-11/007-integracao-kestra-incompleta",
+    "priority": 1,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:34:42.236Z"
+  },
+  {
+    "id": "1519a1ba-1a6a-4def-b76c-9dd8a1be8a17",
+    "identifier": "MY-10",
+    "title": "006: Error Handling Inconsistente",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-10/006-error-handling-inconsistente",
+    "priority": 1,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:34:39.206Z"
+  },
+  {
+    "id": "44ad537c-1e6f-4c59-9941-679017d02571",
+    "identifier": "MY-9",
+    "title": "005: Autenticação Não Implementada",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-9/005-autenticacao-nao-implementada",
+    "priority": 1,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:34:36.157Z"
+  },
+  {
+    "id": "b19e1da8-8671-40c8-ba82-cdd10a92ba74",
+    "identifier": "MY-8",
+    "title": "004: Rate Limiting Ausente",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-8/004-rate-limiting-ausente",
+    "priority": 1,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:34:31.993Z"
+  },
+  {
+    "id": "3075693f-df2a-4ef9-9042-2cf2d203f477",
+    "identifier": "MY-7",
+    "title": "003: Cache Semântico Não Implementado",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-7/003-cache-semantico-nao-implementado",
+    "priority": 1,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:34:28.602Z"
+  },
+  {
+    "id": "57f174c0-c9d5-4b68-80c7-4e1080aac5c7",
+    "identifier": "MY-6",
+    "title": "002: Task Queue Não Persistente",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-6/002-task-queue-nao-persistente",
+    "priority": 1,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:34:25.355Z"
+  },
+  {
+    "id": "4806b0f0-09d2-4089-82d0-93cec564290b",
+    "identifier": "MY-5",
+    "title": "001: Observabilidade Incompleta",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-5/001-observabilidade-incompleta",
+    "priority": 1,
+    "state": {
+      "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-17T00:34:22.124Z"
+  },
+  {
+    "id": "fce76a05-34cc-45b4-a600-316b697d83b1",
+    "identifier": "MY-4",
+    "title": "Import your data (4)",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-4/import-your-data-4",
+    "priority": 0,
+    "state": {
+      "name": "Todo"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-16T22:42:41.378Z"
+  },
+  {
+    "id": "f7a9dca4-be9b-4e98-8a50-583d235834c0",
+    "identifier": "MY-2",
+    "title": "Set up your teams (2)",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-2/set-up-your-teams-2",
+    "priority": 0,
+    "state": {
+      "name": "Todo"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-16T22:42:41.378Z"
+  },
+  {
+    "id": "a5cd4392-2f52-424a-95b3-d98de2ea9fde",
+    "identifier": "MY-1",
+    "title": "Get familiar with Linear (1)",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-1/get-familiar-with-linear-1",
+    "priority": 0,
+    "state": {
+      "name": "Todo"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-16T22:42:41.378Z"
+  },
+  {
+    "id": "60b9f868-ed86-4b3b-a7fe-eb563e62d4ab",
+    "identifier": "MY-3",
+    "title": "Connect your tools (3)",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-3/connect-your-tools-3",
+    "priority": 0,
+    "state": {
+      "name": "Todo"
+    },
+    "assignee": null,
+    "createdAt": "2025-11-16T22:42:41.378Z"
+  }
+]
