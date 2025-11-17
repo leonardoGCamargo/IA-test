@@ -82,7 +82,7 @@ def adicionar_suporte_gemini():
     print()
     print("Para usar Gemini, configure no .env:")
     print("  LLM=gemini-pro")
-    print("  GOOGLE_API_KEY=AIzaSyD7lSqUzy-xvlP3sQHf0IaqAnemtgOqoeM")
+    print("  GOOGLE_API_KEY=your_google_api_key_here")
     
     return True
 

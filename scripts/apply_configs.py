@@ -3,13 +3,19 @@
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
+# Carrega variáveis de ambiente
+load_dotenv()
+
+# Configurações - Use variáveis de ambiente ou .env
+# NUNCA hardcode secrets aqui!
 configs = {
-    "GOOGLE_API_KEY": "AIzaSyD7lSqUzy-xvlP3sQHf0IaqAnemtgOqoeM",
-    "NEON_PROJECT_ID": "napi_jyp0h0270gydb0xvzyei2msvd5dcyv2uvb7l4lig665dx4rgd1cjh9znfw3h5x8s",
-    "MONGODB_URI": "mongodb+srv://DBLEONARDO:<@1Leonardo0409>@lgian.ru8ds53.mongodb.net/",
-    "MONGODB_DATABASE": "default",
-    "MONGODB_ATLAS": "true",
+    "GOOGLE_API_KEY": os.getenv("GOOGLE_API_KEY", ""),
+    "NEON_PROJECT_ID": os.getenv("NEON_PROJECT_ID", ""),
+    "MONGODB_URI": os.getenv("MONGODB_URI", ""),
+    "MONGODB_DATABASE": os.getenv("MONGODB_DATABASE", "default"),
+    "MONGODB_ATLAS": os.getenv("MONGODB_ATLAS", "false"),
 }
 
 project_root = Path(__file__).parent.parent

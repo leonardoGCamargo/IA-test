@@ -12,18 +12,22 @@ def update_env_file():
     project_root = Path(__file__).parent.parent
     env_file = project_root / ".env"
     
-    # Todas as novas configurações
+    from dotenv import load_dotenv
+    load_dotenv()
+    
+    # Todas as novas configurações - Use variáveis de ambiente
+    # NUNCA hardcode secrets aqui!
     new_configs = {
         # Google API Key
-        "GOOGLE_API_KEY": "AIzaSyD7lSqUzy-xvlP3sQHf0IaqAnemtgOqoeM",
+        "GOOGLE_API_KEY": os.getenv("GOOGLE_API_KEY", ""),
         
         # Neon
-        "NEON_PROJECT_ID": "napi_jyp0h0270gydb0xvzyei2msvd5dcyv2uvb7l4lig665dx4rgd1cjh9znfw3h5x8s",
+        "NEON_PROJECT_ID": os.getenv("NEON_PROJECT_ID", ""),
         
         # MongoDB
-        "MONGODB_URI": "mongodb+srv://DBLEONARDO:<@1Leonardo0409>@lgian.ru8ds53.mongodb.net/",
-        "MONGODB_DATABASE": "default",  # Pode ser ajustado depois
-        "MONGODB_ATLAS": "true",  # É Atlas (mongodb+srv://)
+        "MONGODB_URI": os.getenv("MONGODB_URI", ""),
+        "MONGODB_DATABASE": os.getenv("MONGODB_DATABASE", "default"),
+        "MONGODB_ATLAS": os.getenv("MONGODB_ATLAS", "false"),
     }
     
     # Configurações para comentar (AWS - não vai usar)
