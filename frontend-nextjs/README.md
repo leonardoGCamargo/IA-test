@@ -124,3 +124,4 @@ docker run -p 3000:3000 ia-test-frontend
 
 Veja `docs/MIGRATION_GUIDE.md` para detalhes sobre a arquitetura e migração.
 
+

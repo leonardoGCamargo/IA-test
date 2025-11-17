@@ -232,3 +232,4 @@ Para dúvidas ou problemas, consulte:
 - `docs/ENGINEERING_GUIDE.md` - Guia de engenharia
 - Issues no repositório
 
+

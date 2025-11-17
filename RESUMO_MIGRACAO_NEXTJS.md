@@ -221,3 +221,4 @@ docker compose -f config/docker-compose.yml --profile core up
 **Data:** 2025-01-27
 **Versão:** 2.0.0
 
+

@@ -1,0 +1,146 @@
+[
+  {
+    "id": "024",
+    "linear_id": "MY-29",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-29/024-performance-optimization",
+    "title": "Performance Optimization"
+  },
+  {
+    "id": "025",
+    "linear_id": "MY-30",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-30/025-uiux-improvements",
+    "title": "UI/UX Improvements"
+  },
+  {
+    "id": "026",
+    "linear_id": "MY-31",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-31/026-internacionalizacao-i18n",
+    "title": "Internacionalização (i18n)"
+  },
+  {
+    "id": "027",
+    "linear_id": "MY-32",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-32/027-notificacoes",
+    "title": "Notificações"
+  },
+  {
+    "id": "028",
+    "linear_id": "MY-33",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-33/028-exportimport",
+    "title": "Export/Import"
+  },
+  {
+    "id": "029",
+    "linear_id": "MY-34",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-34/029-analytics-dashboard",
+    "title": "Analytics Dashboard"
+  },
+  {
+    "id": "030",
+    "linear_id": "MY-35",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-35/030-plugin-system",
+    "title": "Plugin System"
+  },
+  {
+    "id": "031",
+    "linear_id": "MY-36",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-36/031-multi-tenancy",
+    "title": "Multi-tenancy"
+  },
+  {
+    "id": "032",
+    "linear_id": "MY-37",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-37/032-api-documentation",
+    "title": "API Documentation"
+  },
+  {
+    "id": "033",
+    "linear_id": "MY-38",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-38/033-monitoring-dashboard",
+    "title": "Monitoring Dashboard"
+  },
+  {
+    "id": "034",
+    "linear_id": "MY-39",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-39/034-automated-testing",
+    "title": "Automated Testing"
+  },
+  {
+    "id": "035",
+    "linear_id": "MY-40",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-40/035-documentation-site",
+    "title": "Documentation Site"
+  },
+  {
+    "id": "036",
+    "linear_id": "MY-41",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-41/036-mobile-app",
+    "title": "Mobile App"
+  },
+  {
+    "id": "037",
+    "linear_id": "MY-42",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-42/037-advanced-search",
+    "title": "Advanced Search"
+  },
+  {
+    "id": "038",
+    "linear_id": "MY-43",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-43/038-workflow-builder-ui",
+    "title": "Workflow Builder UI"
+  },
+  {
+    "id": "039",
+    "linear_id": "MY-44",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-44/039-agent-marketplace",
+    "title": "Agent Marketplace"
+  },
+  {
+    "id": "040",
+    "linear_id": "MY-45",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-45/040-cost-tracking",
+    "title": "Cost Tracking"
+  },
+  {
+    "id": "041",
+    "linear_id": "MY-46",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-46/041-ab-testing",
+    "title": "A/B Testing"
+  },
+  {
+    "id": "042",
+    "linear_id": "MY-47",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-47/042-advanced-caching",
+    "title": "Advanced Caching"
+  },
+  {
+    "id": "043",
+    "linear_id": "MY-48",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-48/043-graph-visualization",
+    "title": "Graph Visualization"
+  },
+  {
+    "id": "044",
+    "linear_id": "MY-49",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-49/044-agent-templates",
+    "title": "Agent Templates"
+  },
+  {
+    "id": "045",
+    "linear_id": "MY-50",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-50/045-collaboration-features",
+    "title": "Collaboration Features"
+  },
+  {
+    "id": "046",
+    "linear_id": "MY-51",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-51/046-advanced-security",
+    "title": "Advanced Security"
+  },
+  {
+    "id": "047",
+    "linear_id": "MY-52",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-52/047-performance-monitoring",
+    "title": "Performance Monitoring"
+  }
+]

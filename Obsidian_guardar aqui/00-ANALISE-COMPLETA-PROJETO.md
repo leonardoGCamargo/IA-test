@@ -282,3 +282,4 @@ Lista completa de melhorias nice-to-have:
 **Última atualização:** 2025-01-27  
 **Próxima revisão:** 2025-02-10
 
+

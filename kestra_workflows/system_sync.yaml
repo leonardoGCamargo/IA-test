@@ -83,3 +83,4 @@ triggers:
     cron: "0 */6 * * *"  # A cada 6 horas
     description: Sincronização automática a cada 6 horas
 
+

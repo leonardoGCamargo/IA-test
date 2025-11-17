@@ -71,3 +71,4 @@ export function AgentCard({ agent, onExecute }: AgentCardProps) {
   );
 }
 
+

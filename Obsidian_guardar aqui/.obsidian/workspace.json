@@ -178,6 +178,8 @@
   },
   "active": "271ab1158c56f745",
   "lastOpenFiles": [
+    "00-LINEAR-INTEGRACAO.md",
+    "00-GIT-E-LINEAR-SETUP.md",
     "00-ANALISE-COMPLETA-PROJETO.md",
     "GUIA_NAVEGACAO.md",
     "Clippings/Introduction to Obsidian Web Clipper.md",
@@ -207,8 +209,6 @@
     "Agentes/Git-Integration.md",
     "Agentes/DB-Manager.md",
     "LANGCHAIN-NEO4J.md",
-    "LANGGRAPH-CONCEITOS.md",
-    "LANGCHAIN-EXEMPLOS.md",
     "errors_report.json"
   ]
 }

@@ -1,0 +1,146 @@
+[
+  {
+    "id": "001",
+    "linear_id": "MY-5",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-5/001-observabilidade-incompleta",
+    "title": "Observabilidade Incompleta"
+  },
+  {
+    "id": "002",
+    "linear_id": "MY-6",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-6/002-task-queue-nao-persistente",
+    "title": "Task Queue Não Persistente"
+  },
+  {
+    "id": "003",
+    "linear_id": "MY-7",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-7/003-cache-semantico-nao-implementado",
+    "title": "Cache Semântico Não Implementado"
+  },
+  {
+    "id": "004",
+    "linear_id": "MY-8",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-8/004-rate-limiting-ausente",
+    "title": "Rate Limiting Ausente"
+  },
+  {
+    "id": "005",
+    "linear_id": "MY-9",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-9/005-autenticacao-nao-implementada",
+    "title": "Autenticação Não Implementada"
+  },
+  {
+    "id": "006",
+    "linear_id": "MY-10",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-10/006-error-handling-inconsistente",
+    "title": "Error Handling Inconsistente"
+  },
+  {
+    "id": "007",
+    "linear_id": "MY-11",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-11/007-integracao-kestra-incompleta",
+    "title": "Integração Kestra Incompleta"
+  },
+  {
+    "id": "008",
+    "linear_id": "MY-12",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-12/008-websocket-implementation-incompleta",
+    "title": "WebSocket Implementation Incompleta"
+  },
+  {
+    "id": "009",
+    "linear_id": "MY-13",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-13/009-persistencia-de-memoria-parcial",
+    "title": "Persistência de Memória Parcial"
+  },
+  {
+    "id": "010",
+    "linear_id": "MY-14",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-14/010-testes-insuficientes",
+    "title": "Testes Insuficientes"
+  },
+  {
+    "id": "011",
+    "linear_id": "MY-15",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-15/011-documentacao-desatualizada",
+    "title": "Documentação Desatualizada"
+  },
+  {
+    "id": "012",
+    "linear_id": "MY-16",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-16/012-docker-compose-pode-ser-otimizado",
+    "title": "Docker Compose Pode Ser Otimizado"
+  },
+  {
+    "id": "013",
+    "linear_id": "MY-17",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-17/013-frontend-nextjs-incompleto",
+    "title": "Frontend Next.js Incompleto"
+  },
+  {
+    "id": "014",
+    "linear_id": "MY-18",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-18/014-codigo-duplicado",
+    "title": "Código Duplicado"
+  },
+  {
+    "id": "015",
+    "linear_id": "MY-19",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-19/015-variaveis-de-ambiente-nao-validadas",
+    "title": "Variáveis de Ambiente Não Validadas"
+  },
+  {
+    "id": "016",
+    "linear_id": "MY-20",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-20/016-falta-de-cicd",
+    "title": "Falta de CI/CD"
+  },
+  {
+    "id": "017",
+    "linear_id": "MY-21",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-21/017-logging-nao-estruturado",
+    "title": "Logging Não Estruturado"
+  },
+  {
+    "id": "018",
+    "linear_id": "MY-22",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-22/018-falta-de-metricas-de-negocio",
+    "title": "Falta de Métricas de Negócio"
+  },
+  {
+    "id": "019",
+    "linear_id": "MY-23",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-23/019-falta-de-backup-automatico",
+    "title": "Falta de Backup Automático"
+  },
+  {
+    "id": "020",
+    "linear_id": "MY-24",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-24/020-falta-de-versionamento-de-api",
+    "title": "Falta de Versionamento de API"
+  },
+  {
+    "id": "021",
+    "linear_id": "MY-25",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-25/021-falta-de-validacao-de-inputs",
+    "title": "Falta de Validação de Inputs"
+  },
+  {
+    "id": "022",
+    "linear_id": "MY-26",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-26/022-falta-de-paginacao",
+    "title": "Falta de Paginação"
+  },
+  {
+    "id": "023",
+    "linear_id": "MY-27",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-27/023-falta-de-filtros-e-busca",
+    "title": "Falta de Filtros e Busca"
+  },
+  {
+    "id": "024 a L-047",
+    "linear_id": "MY-28",
+    "url": "https://linear.app/meu-projeto-ia/issue/MY-28/024-a-l-047-melhorias-opcionais",
+    "title": "Melhorias Opcionais"
+  }
+]
